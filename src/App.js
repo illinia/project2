@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import CommunityPage from './pages/CommunityPage';
+import InfoPage from './pages/InfoPage';
+import LinkPage from './pages/LinkPage';
+import MainPage from './pages/MainPage';
+import VaccinePage from './pages/VaccinePage';
+import NewsPage from './pages/NewsPage';
+import Header from './common/Header';
+import WritePage from './pages/WritePage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div>
+        <Header />
+      </div>
+      <Route component={CommunityPage} path="/community" />
+      <Route component={InfoPage} path="/infoPage" />
+      <Route component={LinkPage} path="/pages" />
+      <Route component={MainPage} path={["/", "/main"]} exact />
+      <Route component={NewsPage} path="/news" />
+      <Route component={VaccinePage} path="/vaccine" />
+      <Route component={WritePage} path="/write" />
+    </>
+  )
 }
 
 export default App;

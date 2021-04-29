@@ -1,0 +1,37 @@
+{
+  "category": [
+    {
+      "name": "main",
+      "text": "코로나 현황"
+    },
+    {
+      "name": "vaccine",
+      "text": "백신 현황"
+    },
+    {
+      "name": "infoPage",
+      "text": "코로나란"
+    },
+    {
+      "name": "news",
+      "text": "관련 뉴스"
+    },
+    {
+      "name": "community",
+      "text": "커뮤니티"
+    },
+    {
+      "name": "pages",
+      "text": "참고사이트"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "test",
+      "body": "test1",
+      "writer": "tester",
+      "password": "1234"
+    }
+  ]
+}

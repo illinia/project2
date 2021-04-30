@@ -20,11 +20,11 @@ export const changeField = createAction(CHANGE_FIELD, ({ form, key, value }) => 
 }));
 
 export const initializeForm = createAction(INITIALIZE, form => form);
-export const post = createAction(POST, ({ title, body, writer, password }) => ({
+export const post = createAction(POST, ({ title, content, name, pass }) => ({
   title,
-  body,
-  writer,
-  password,
+  content,
+  name,
+  pass,
 }))
 
 const postSaga = createRequestSaga(POST, postAPI.write);
@@ -36,9 +36,9 @@ export function* writeSaga() {
 const initialState = {
   posts: {
     title: '',
-    body: '',
-    writer: '',
-    password: '',
+    content: '',
+    name: '',
+    pass: '',
   },
 }
 

@@ -59,24 +59,24 @@ const Editor = ({ onChange, onSubmit, form }) => {
           value={form.title}
         />
         <BodyInput
-          name="body"
+          name="content"
           placeholder="내용을 입력하세요"
           onChange={onChange}
-          value={form.body}
+          value={form.content}
         />
         <DetailInput>
           <WriterInput
-            name="writer"
+            name="name"
             placeholder="이름을 입력하세요"
             onChange={onChange}
-            value={form.writer}
+            value={form.name}
           />
           <WriterInput
-            name="password"
+            name="pass"
             placeholder="비밀번호를 입력하세요"
             type="password"
             onChange={onChange}
-            value={form.password}
+            value={form.pass}
           />
           <WriteActionButtons />
         </DetailInput>

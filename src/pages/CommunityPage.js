@@ -1,8 +1,9 @@
 import React from 'react';
+import PostList from '../components/posts/PostList';
 
 const CommunityPage = ({ Header }) => {
   return (
-    <div>커뮤니티 페이지</div>
+    <PostList />
   )
 }
 

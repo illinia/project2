@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import palette from '../lib/styles/palette';
 
 const MenuBlock = styled.div`
-  width: 978px;
-  height: 68px;
+  width: 800px;
+  height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   flex-direction: column;
-  margin-top: 30px;
-
-  @media (max-width: 978px) {
-    width: calc(100% - 50px)
+  transition: 0.3s ease-in;
+  @media (max-width: 800px) {
+    width: calc(100% - 50px);
   }
 `;
 
@@ -24,7 +24,7 @@ const MenuTitle = styled.div`
 const Line = styled.div`
   width: 100%;
   height: 1px;
-  background: #c4c4c4;
+  border: 1px solid ${palette.gray[4]};
 `;
 
 const Menu = ({ category }) => {

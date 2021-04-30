@@ -1,11 +1,24 @@
 import React from 'react';
-import img1 from '../img/5e4b7200d8ae92.32728338.jpg';
+import styled from 'styled-components';
+import Page from '../components/common/Page';
+
+const SmallPage = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+`;
 
 const InfoPage = () => {
   return (
-    <>
+    <Page>
       <img src="http://ncov.mohw.go.kr/static/image/content/baroview_poster3.png" />
-    </>
+      <SmallPage>
+        <img style={{ width: "440px" }} src="http://ncov.mohw.go.kr/static/image/content/baroview_poster4.png" />
+        <img style={{ width: "440px" }} src="http://ncov.mohw.go.kr/static/image/content/baroview_poster5.png" />
+      </SmallPage>
+      <img src="http://ncov.mohw.go.kr/static/image/content/baroview_poster6.png" />
+    </Page>
   )
 }
 

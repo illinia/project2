@@ -8,20 +8,20 @@ import VaccinePage from './pages/VaccinePage';
 import NewsPage from './pages/NewsPage';
 import Header from './common/Header';
 import WritePage from './pages/WritePage';
+import PostPage from './pages/PostPage';
 
 const App = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <Route component={CommunityPage} path="/community" />
+      <Header />
+      <Route component={CommunityPage} path="/community" exact />
       <Route component={InfoPage} path="/infoPage" />
       <Route component={LinkPage} path="/pages" />
       <Route component={MainPage} path={["/", "/main"]} exact />
       <Route component={NewsPage} path="/news" />
       <Route component={VaccinePage} path="/vaccine" />
       <Route component={WritePage} path="/write" />
+      <Route component={PostPage} path="/community/posts?:postId" />
     </>
   )
 }

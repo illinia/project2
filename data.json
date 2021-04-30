@@ -27,11 +27,11 @@
   ],
   "posts": [
     {
-      "id": 1,
       "title": "test",
-      "body": "test1",
-      "writer": "tester",
-      "password": "1234"
+      "content": "test1",
+      "name": "tester",
+      "regDate": "2021-04-30",
+      "cnt": 1
     }
   ]
 }

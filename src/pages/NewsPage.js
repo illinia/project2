@@ -1,7 +1,10 @@
 import React from 'react';
+import NewsList from '../components/news/NewsList';
 
 const NewsPage = () => {
-  return (<div>뉴스페이지</div>)
+  return (
+    <NewsList />
+  )
 }
 
 export default NewsPage;

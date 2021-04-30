@@ -65,16 +65,15 @@ const StyledButton = styled(NavLink)`
   `}
 `;
 
+const HeaderButton = ({ form, onChange }) => {
 
-
-const HeaderButton = ({ onSelect, category }) => {
   return (
     <ButtonsBlock>
       {categories.map(c => (
         <StyledButton
           key={c.name}
-          active={category === c.name}
-          onClick={() => onSelect(c.name)}
+          active={form.name === c.name}
+          onClick={() => onChange(c)}
           exact={c.name === 'main'}
           to={c.name === 'main' ? '/' : `/${c.name}`}
         >{c.text}</StyledButton>

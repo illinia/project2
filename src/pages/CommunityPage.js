@@ -1,9 +1,13 @@
 import React from 'react';
+import Menu from '../common/Menu';
 import PostList from '../components/posts/PostList';
 
 const CommunityPage = ({ Header }) => {
   return (
-    <PostList />
+    <>
+      <Menu>커뮤니티</Menu>
+      <PostList />
+    </>
   )
 }
 

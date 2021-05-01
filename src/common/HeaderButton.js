@@ -48,10 +48,9 @@ const StyledButton = styled(NavLink)`
   background: none;
   text-decoration: none;
   
-  &:hover,
-  &:focus {
+  &:hover {
     transform: translateY(-3px) scale(1.1);
-    border-bottom: 2px solid rgb(248, 249, 250);
+    border-bottom: 2px solid #ced4da;
   }
 
   & + & {
@@ -61,18 +60,18 @@ const StyledButton = styled(NavLink)`
   ${props =>
     props.active && css`
       transform: translateY(-3px) scale(1.1);
-      border-bottom: 2px solid #ced4da;
+      border-bottom: 2px solid rgb(248, 249, 250);
   `}
 `;
 
-const HeaderButton = ({ form, onChange }) => {
+const HeaderButton = ({ category, onChange }) => {
 
   return (
     <ButtonsBlock>
       {categories.map(c => (
         <StyledButton
           key={c.name}
-          active={form.name === c.name}
+          active={category === c.name}
           onClick={() => onChange(c)}
           exact={c.name === 'main'}
           to={c.name === 'main' ? '/' : `/${c.name}`}

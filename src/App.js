@@ -9,21 +9,27 @@ import NewsPage from './pages/NewsPage';
 import Header from './common/Header';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import { withRouter } from 'react-router-dom';
 
-const App = () => {
+const App = ({ location }) => {
+  let pathName = location.pathname.split('/')
+
+  if (pathName[1] === "") {
+    pathName = ["", "main"]
+  }
   return (
     <>
-      <Header />
+      <Header category={pathName[1]} />
       <Route component={CommunityPage} path="/community" exact />
-      <Route component={InfoPage} path="/infoPage" />
-      <Route component={LinkPage} path="/pages" />
+      <Route component={InfoPage} path="/infoPage" exact />
+      <Route component={LinkPage} path="/pages" exact />
       <Route component={MainPage} path={["/", "/main"]} exact />
-      <Route component={NewsPage} path="/news" />
-      <Route component={VaccinePage} path="/vaccine" />
-      <Route component={WritePage} path="/write" />
-      <Route component={PostPage} path="/community/posts?:postId" />
+      <Route component={NewsPage} path="/news" exact />
+      <Route component={VaccinePage} path="/vaccine" exact />
+      <Route component={WritePage} path="/write" exact />
+      <Route component={PostPage} path="/community/:postId" exact />
     </>
   )
 }
 
-export default App;
+export default withRouter(App);

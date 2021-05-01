@@ -1,7 +1,12 @@
 import React from 'react';
+import Menu from '../common/Menu';
 
 const LinkPage = () => {
-  return (<div>페이지링크</div>)
+  return (
+    <>
+      <Menu>참고 사이트</Menu>
+    </>
+  )
 }
 
 export default LinkPage;

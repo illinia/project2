@@ -1,13 +1,12 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import Editor from '../../components/write/Editor';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, initializeForm } from '../../modules/write';
-import { write } from '../../lib/api/post';
+import { changeField, initialize } from '../../modules/write';
 
 const EditorContainer = () => {
   const dispatch = useDispatch();
   const { form } = useSelector(({ write }) => ({
-    form: write.posts
+    form: write
   }))
 
   const onChange = e => {
@@ -25,12 +24,8 @@ const EditorContainer = () => {
     e.preventDefault();
   }
 
-  const onChangeField = useCallback(payload => dispatch(changeField(payload)), [
-    dispatch,
-  ])
-
   useEffect(() => {
-    dispatch(initializeForm('posts'));
+    dispatch(initialize('posts'));
   }, [dispatch])
 
   return (

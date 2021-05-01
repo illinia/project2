@@ -1,10 +1,9 @@
 import React from 'react';
+import Board from '../components/main/Board';
 
 const MainPage = () => {
   return (
-    <div>
-      메인페이지
-    </div>
+    <Board />
   )
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-import Responsive from '../common/Responsive';
 import Button from '../common/Button';
 
 const PostListBlock = styled.div`
@@ -62,12 +61,7 @@ const PostItem = () => {
   return (
     <PostItemblock>
       <h2>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</h2>
-      <SubInfo>
-        <span>
-          <b>username</b>
-        </span>
-        <span>{new Date().toLocaleDateString()}</span>
-      </SubInfo>
+      <SubInfo no="1" name="name" regDate={new Date()} />
       <p>포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용</p>
     </PostItemblock>
   )

@@ -10,6 +10,10 @@ const PageBlock = styled.div`
   @media (max-width: 900px) {
     width: 100%;
   }
+
+  img {
+    margin-top: 20px;
+  }
 `;
 
 const Page = ({ children, ...rest }) => {

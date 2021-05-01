@@ -1,7 +1,8 @@
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import styled from 'styled-components';
+import Menu from '../../common/Menu';
 import palette from '../../lib/styles/palette';
+import SubInfo from '../common/SubInfo';
 
 const PostViewerBlock = styled.div`
   width: 800px;
@@ -21,17 +22,6 @@ const PostHead = styled.div`
     font-size: 1.5rem;
     line-height: 1.5;
     margin: 0;
-  }
-`;
-
-const SubInfo = styled.div`
-  color: ${palette.gray[6]};
-
-  span + span:before {
-    color: ${palette.gray[5]};
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    content: '\|';
   }
 `;
 
@@ -55,18 +45,20 @@ const PostViewer = ({ post, error, loading }) => {
   const { title, content, name, regDate } = post;
 
   return (
-    <PostViewerBlock>
-      <PostHead>
-        <h1>{title}</h1>
-        <SubInfo>
-          <span>
-            <b>{name}</b>
-          </span>
-          <span>{new Date(regDate).toLocaleDateString()}</span>
-        </SubInfo>
-      </PostHead>
-      <PostContent>{content}</PostContent>
-    </PostViewerBlock>
+    <>
+      <Menu>게시글 상세보기</Menu>
+      <PostViewerBlock>
+        <PostHead>
+          <h1>{title}</h1>
+          <SubInfo
+            name={name}
+            regDate={regDate}
+            hasMarginTop
+          />
+        </PostHead>
+        <PostContent>{content}</PostContent>
+      </PostViewerBlock>
+    </>
   )
 }
 

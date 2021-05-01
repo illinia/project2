@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import palette from '../lib/styles/palette';
 
 const MenuBlock = styled.div`
+  width: 100vw;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MenuBox = styled.div`
   width: 800px;
   height: 100%;
   display: flex;
@@ -27,11 +35,13 @@ const Line = styled.div`
   border: 1px solid ${palette.gray[4]};
 `;
 
-const Menu = ({ category }) => {
+const Menu = ({ children }) => {
   return (
     <MenuBlock>
-      <MenuTitle>{category}</MenuTitle>
-      <Line />
+      <MenuBox>
+        <MenuTitle>{children}</MenuTitle>
+        <Line />
+      </MenuBox>
     </MenuBlock>
   )
 }

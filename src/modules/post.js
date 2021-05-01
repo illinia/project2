@@ -4,7 +4,6 @@ import createRequestSaga, {
 } from '../lib/createRequestSaga';
 import * as postAPI from '../lib/api/post';
 import { takeLatest } from 'redux-saga/effects';
-import produce from 'immer';
 
 const [
   READ_POST,

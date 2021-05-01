@@ -25,13 +25,12 @@
       "text": "참고사이트"
     }
   ],
-  "posts": [
-    {
-      "title": "test",
-      "content": "test1",
-      "name": "tester",
-      "regDate": "2021-04-30",
-      "cnt": 1
-    }
-  ]
+  "id": {
+    "id": 1,
+    "title": "test",
+    "content": "test1",
+    "name": "tester",
+    "regDate": "2021-04-30",
+    "cnt": 1
+  }
 }

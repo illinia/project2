@@ -1,5 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-import produce from 'immer';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
   createRequestActionTypes
@@ -8,54 +7,59 @@ import * as postAPI from '../lib/api/post';
 
 const INITIALIZE = 'write/INITIALIZE';
 const CHANGE_FIELD = 'write/CHANGE_FIELD';
+const [
+  WRITE_POST,
+  WRITE_POST_SUCCESS,
+  WRITE_POST_FAILURE
+] = createRequestActionTypes('write/WRITE_POST');
 
-const [POST, POST_SUCCESS, POST_FAILURE] = createRequestActionTypes(
-  'write/POST',
-)
-
-export const changeField = createAction(CHANGE_FIELD, ({ form, key, value }) => ({
-  form,
+export const initialize = createAction(INITIALIZE);
+export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   key,
   value
 }));
 
-export const initializeForm = createAction(INITIALIZE, form => form);
-export const post = createAction(POST, ({ title, content, name, pass }) => ({
+export const writePost = createAction(WRITE_POST, ({ title, content, name, pass }) => ({
   title,
   content,
   name,
-  pass,
+  pass
 }))
 
-const postSaga = createRequestSaga(POST, postAPI.write);
-
+const writePostSaga = createRequestSaga(WRITE_POST, postAPI.writePost);
 export function* writeSaga() {
-  yield takeLatest(POST, postSaga);
+  yield takeLatest(WRITE_POST, writePostSaga);
 }
 
 const initialState = {
-  posts: {
-    title: '',
-    content: '',
-    name: '',
-    pass: '',
-  },
+  title: '',
+  content: '',
+  name: '',
+  pass: '',
+  post: null,
+  postError: null,
 }
 
 const write = handleActions(
   {
-    [INITIALIZE]: (state, { payload: form }) => ({
+    [INITIALIZE]: state => initialState,
+    [CHANGE_FIELD]: (state, { payload: { key, value } }) => ({
       ...state,
-      [form]: initialState[form],
+      [key]: value,
     }),
-    [CHANGE_FIELD]: (state, { payload: { form, key, value } }) =>
-      produce(state, draft => {
-        draft[form][key] = value;
-      }),
-    [POST_SUCCESS]: (state, { payload: posts }) => ({
+    [WRITE_POST]: state => ({
       ...state,
-      posts,
-    })
+      post: null,
+      postError: null,
+    }),
+    [WRITE_POST_SUCCESS]: (state, { payload: post }) => ({
+      ...state,
+      post
+    }),
+    [WRITE_POST_FAILURE]: (state, { payload: postError }) => ({
+      ...state,
+      postError,
+    }),
   },
   initialState
 )

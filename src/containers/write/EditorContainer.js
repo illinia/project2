@@ -5,9 +5,13 @@ import { changeField, initialize } from '../../modules/write';
 
 const EditorContainer = () => {
   const dispatch = useDispatch();
-  const { form } = useSelector(({ write }) => ({
-    form: write
+  const { title, content, name, pass } = useSelector(({ write }) => ({
+    title: write.title,
+    content: write.content,
+    name: write.name,
+    pass: write.pass
   }))
+  const { responsive } = useSelector(responsive => responsive)
 
   const onChange = e => {
     const { value, name } = e.target;
@@ -25,14 +29,21 @@ const EditorContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(initialize('posts'));
+    return () => {
+      dispatch(initialize());
+    }
   }, [dispatch])
 
   return (
     <Editor
+      responsive={responsive}
       onChange={onChange}
       onSubmit={onSubmit}
-      form={form} />
+      title={title}
+      content={content}
+      name={name}
+      pass={pass}
+    />
   )
 }
 

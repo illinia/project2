@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Logo = styled(NavLink)`
-  width: 171px;
+  width: 170px;
   height: 54px;
   font-weight: 600;
   font-size: 2.25rem;
   color: rgb(248, 249, 250);
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   text-decoration: none;
 `;

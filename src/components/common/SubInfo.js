@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 
 const SubInfoBlock = styled.div`
@@ -23,9 +22,7 @@ const SubInfo = ({ no, name, regDate, hasMarginTop }) => {
   return (
     <SubInfoBlock hasMarginTop={hasMarginTop}>
       <span>
-        <b>
-          <Link to={`/community/${no}`}>{name}</Link>
-        </b>
+        <b>{name}</b>
       </span>
       <span>{new Date(regDate).toLocaleDateString()}</span>
     </SubInfoBlock>

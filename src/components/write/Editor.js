@@ -4,11 +4,16 @@ import Menu from '../../common/Menu';
 import WriteActionButtonsContainer from '../../containers/write/WriteActionButtonsContainer';
 import palette from '../../lib/styles/palette';
 
-
 const EditorBlock = styled.div`
   padding: 2rem 2rem 0.5rem 2rem;
   width: 800px;
   margin: 0 auto;
+
+  input {
+    padding-left: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
 
   @media (max-width: 800px) {
     width: 100%;
@@ -20,16 +25,23 @@ const TitleInput = styled.input`
   outline: none;
   padding-bottom: 0.5rem;
   border: none;
-  border-bottom: 1px solid ${palette.gray[4]};
+  // border-bottom: 1px solid ${palette.gray[4]};
   width: 100%;
 `;
 
 const DetailInput = styled.div`
   width: 100%;
   border-top: 1px solid ${palette.gray[4]};
-  display: flex;
-  height: 50px;
+  display: grid;
+  min-height: 50px;
   align-items:center;
+  grid-template-columns: auto auto auto;
+
+  @media (max-width: 600px) {
+    height: 150px;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: 100%;
+  }
 `;
 
 const WriterInput = styled.input`
@@ -37,6 +49,16 @@ const WriterInput = styled.input`
   outline: none;
   border: none;
   font-size: 1.125rem;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    font-size: 1rem;
+    height: 50px;
+
+    & + & {
+      border-top: 1px solid ${palette.gray[4]};
+    }
+  }
 `;
 
 const BodyInput = styled.textarea`
@@ -48,9 +70,13 @@ const BodyInput = styled.textarea`
   border: none;
   margin-top: 1rem;
   resize: none;
+
+  @media (max-width: 600px) {
+    min-height: 160px;
+  }
 `;
 
-const Editor = ({ onChange, onSubmit, form }) => {
+const Editor = ({ responsive, onChange, onSubmit, title, content, name, pass }) => {
   return (
     <>
       <Menu>게시글 작성하기</Menu>
@@ -60,27 +86,27 @@ const Editor = ({ onChange, onSubmit, form }) => {
             name="title"
             placeholder="제목을 입력하세요"
             onChange={onChange}
-            value={form.title}
+            value={title}
           />
           <BodyInput
             name="content"
             placeholder="내용을 입력하세요"
             onChange={onChange}
-            value={form.content}
+            value={content}
           />
           <DetailInput>
             <WriterInput
               name="name"
               placeholder="이름을 입력하세요"
               onChange={onChange}
-              value={form.name}
+              value={name}
             />
             <WriterInput
               name="pass"
               placeholder="비밀번호를 입력하세요"
               type="password"
               onChange={onChange}
-              value={form.pass}
+              value={pass}
             />
             <WriteActionButtonsContainer />
           </DetailInput>

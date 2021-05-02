@@ -12,13 +12,11 @@ const [
 ] = createRequestActionTypes('post/READ_POST');
 const UNLOAD_POST = 'post/UNLOAD_POST';
 
-export const readPost = createAction(READ_POST, id => id);
+export const readPost = createAction(READ_POST, no => no);
 export const unloadPost = createAction(UNLOAD_POST);
 
 
 const readPostSaga = createRequestSaga(READ_POST, postAPI.readPost);
-
-
 export function* postSaga() {
   yield takeLatest(READ_POST, readPostSaga);
 }

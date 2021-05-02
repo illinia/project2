@@ -1,32 +1,44 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import HeaderButton from '../common/HeaderButton';
-import { changePage, initializeForm } from '../modules/page';
+import HeaderHambuger from './HeaderHambuger';
+import { debounce } from 'lodash';
+import { useDispatch } from 'react-redux';
+import { changeValue } from '../modules/responsive';
 
 
 const HeaderContainer = ({ category }) => {
-  const dispatch = useDispatch();
 
-  const onChange = e => {
-    const { name, text } = e
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+  })
 
-    dispatch(
-      changePage({
-        key: name,
-        value: text
-      }),
-    )
-  }
+  const handleResize = debounce(() => {
+    setWindowSize({
+      width: window.innerWidth,
+    })
+  }, 10)
 
   useEffect(() => {
-    dispatch(initializeForm())
-  }, [dispatch])
+    window.addEventListener('resize', handleResize);
+    return () => { // cleanup 
+      window.removeEventListener('resize', handleResize);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const responsiveCheck = windowSize.width < 800 ? true : false
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeValue(windowSize.width))
+  }, [dispatch, windowSize.width])
 
   return (
-    <HeaderButton
-      category={category}
-      onChange={onChange}
-    />
+    <>
+      <HeaderButton responsiveCheck={responsiveCheck} category={category} />
+      <HeaderHambuger responsiveCheck={responsiveCheck} category={category} />
+    </>
   )
 }
 

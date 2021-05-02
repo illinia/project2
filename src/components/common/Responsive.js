@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ResponsiveBlock = styled.div`
-  width: 1200px;
+  width: 1000px;
   margin: 0 auto;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1000px) {
     width: 100%;
   }
 `;

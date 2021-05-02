@@ -17,17 +17,19 @@ const App = ({ location }) => {
   if (pathName[1] === "") {
     pathName = ["", "main"]
   }
+
   return (
     <>
       <Header category={pathName[1]} />
       <Route component={CommunityPage} path="/community" exact />
       <Route component={InfoPage} path="/infoPage" exact />
       <Route component={LinkPage} path="/pages" exact />
-      <Route component={MainPage} path={["/", "/main"]} exact />
+      <Route component={MainPage} path="/main" />
+      <Route component={MainPage} path="/" exact />
       <Route component={NewsPage} path="/news" exact />
       <Route component={VaccinePage} path="/vaccine" exact />
-      <Route component={WritePage} path="/write" exact />
-      <Route component={PostPage} path="/community/:postId" exact />
+      <Route component={WritePage} path="/community/write" exact />
+      <Route component={PostPage} path="/community/post/:postId" exact />
     </>
   )
 }

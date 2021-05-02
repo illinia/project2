@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
+import SubInfo from '../common/SubInfo';
+import { Link } from 'react-router-dom';
+import Loading from '../../common/Loading';
 
 const PostListBlock = styled.div`
-  width: 800px;
+  width: 700px;
   margin: 0 auto;
   margin-top: 1rem;
   transition: 0.3s ease-in;
-  @media (max-width: 800px) {
+  @media (max-width: 730px) {
     width: calc(100% - 50px)
   }
 `;
@@ -19,7 +22,7 @@ const WritePostButtonWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const PostItemblock = styled.div`
+const PostItemBlock = styled.div`
   padding-top: 3rem;
 
   &:first-child {
@@ -30,57 +33,61 @@ const PostItemblock = styled.div`
     border-top: 1px solid ${palette.gray[2]};
   }
 
-  h2 {
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    height: 1.125rem;
-    overflow: hidden;
-    &:hover {
-      color: ${palette.gray[6]};
-      cursor: pointer;
-    }
-  }
   p {
     margin-top: 0.5rem;
   }
 `;
 
-const SubInfo = styled.div`
-  color: ${palette.gray[6]};
-
-  span + span:before {
-    color: ${palette.gray[4]};
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    content: '\|';
+const TitleBlock = styled(Link)`
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  height: 1.375rem;
+  overflow: hidden;
+  &:hover {
+    color: ${palette.gray[6]};
+    cursor: pointer;
   }
 `;
 
-const PostItem = () => {
+const PostItem = ({ post }) => {
+  const { regDate, name, title, content, no } = post
+
   return (
-    <PostItemblock>
-      <h2>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</h2>
-      <SubInfo no="1" name="name" regDate={new Date()} />
-      <p>포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용포스트 내용</p>
-    </PostItemblock>
+    <PostItemBlock>
+      <TitleBlock to={`/community/post/${no}`}>{title}</TitleBlock>
+      <SubInfo no={no} name={name} regDate={new Date(regDate)} />
+      <p>{content}</p>
+    </PostItemBlock>
   )
 }
 
-const PostList = () => {
+const PostList = ({ posts, loading, error }) => {
+  if (error) {
+    return <PostListBlock>에러가 발생했습니다.</PostListBlock>
+  }
+
+  if (loading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <PostListBlock>
       <WritePostButtonWrapper>
-        <Button cyan to="/write">
+        <Button cyan to="/community/write">
           새 글 작성하기
         </Button>
       </WritePostButtonWrapper>
-      <div>
-        <PostItem />
-        <PostItem />
-        <PostItem />
-        <PostItem />
-      </div>
+      {!loading && posts && (
+        <div>
+          {posts["boardList"].map(post => (
+            <PostItem post={post} key={post._id} />
+          ))}
+        </div>
+      )}
     </PostListBlock>
   )
 }

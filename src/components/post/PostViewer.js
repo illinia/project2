@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Loading from '../../common/Loading';
 import Menu from '../../common/Menu';
 import palette from '../../lib/styles/palette';
 import SubInfo from '../common/SubInfo';
@@ -30,7 +31,7 @@ const PostContent = styled.div`
   color: ${palette.gray[8]};
 `;
 
-const PostViewer = ({ post, error, loading }) => {
+const PostViewer = ({ post, error, loading, actionButtons }) => {
   if (error) {
     if (error.response && error.response.status === 404) {
       return <PostViewerBlock>존재하지 않는 포스트입니다.</PostViewerBlock>
@@ -39,7 +40,9 @@ const PostViewer = ({ post, error, loading }) => {
   }
 
   if (loading || !post) {
-    return null;
+    return (
+      <Loading />
+    )
   }
 
   const { title, content, name, regDate } = post;
@@ -56,6 +59,7 @@ const PostViewer = ({ post, error, loading }) => {
             hasMarginTop
           />
         </PostHead>
+        {actionButtons}
         <PostContent>{content}</PostContent>
       </PostViewerBlock>
     </>

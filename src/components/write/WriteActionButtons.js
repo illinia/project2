@@ -14,16 +14,17 @@ const WriteActionButtonsBlock = styled.div`
 
 const StyledButton = styled(Button)`
   height: 2.125rem;
+  width: 60px;
   & + & {
     margin-left: 0.5rem;
   }
 `;
 
-const WriteActionButtons = ({ onCancel, onPublish }) => {
+const WriteActionButtons = ({ onCancel, onPublish, isEdit }) => {
   return (
     <WriteActionButtonsBlock>
       <StyledButton onClick={onPublish}>
-        등록하기
+        {isEdit ? '수정' : '등록'}
       </StyledButton>
       <StyledButton onClick={onCancel}>취소</StyledButton>
     </WriteActionButtonsBlock>

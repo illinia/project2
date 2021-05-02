@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import palette from '../lib/styles/palette';
 
 const MenuBlock = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 90px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ const MenuBox = styled.div`
   justify-content: flex-end;
   flex-direction: column;
   transition: 0.3s ease-in;
-  @media (max-width: 800px) {
+  @media (max-width: 820px) {
     width: calc(100% - 50px);
   }
 `;

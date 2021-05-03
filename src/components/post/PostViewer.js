@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import Loading from '../../common/Loading';
 import Menu from '../../common/Menu';
 import palette from '../../lib/styles/palette';
-import { changeField, initialize } from '../../modules/write';
 import SubInfo from '../common/SubInfo';
+import ReplyShowBox from './ReplyShowBox';
 
 const PostViewerBlock = styled.div`
   width: 800px;
@@ -37,38 +36,8 @@ const PostContent = styled.div`
   margin-bottom: 1rem;
 `;
 
-const PassInput = styled.input`
-  width: 200px;
-  outline: none;
-  border: none;
-  font-size: 1.125rem;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    font-size: 1rem;
-    height: 50px;
-
-    & + & {
-      border-top: 1px solid ${palette.gray[4]};
-    }
-  }
-`;
-
 const PostViewer = ({ post, error, loading, actionButtons }) => {
-  const dispatch = useDispatch();
-  const { pass } = useSelector(({ write }) => ({
-    pass: write.pass
-  }))
 
-  const onChange = e => {
-    const { value, name } = e.target
-    dispatch(
-      changeField({
-        key: name,
-        value
-      })
-    )
-  }
 
   if (error) {
     if (error.response && error.response.status === 404) {
@@ -99,13 +68,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
         </PostHead>
         {actionButtons}
         <PostContent>{content}</PostContent>
-        <PassInput
-          name="pass"
-          placeholder="비밀번호를 입력하세요"
-          type="password"
-          value={pass}
-          onChange={onChange}
-        />
+        <ReplyShowBox />
       </PostViewerBlock>
     </>
   )

@@ -55,7 +55,7 @@ const WriteActionButtonsContainer = ({ history }) => {
       } else if (updateCheck === true && post === -1) {
         alert("비밀번호가 틀립니다.")
       } else if (updateCheck === true && post === 0) {
-        alert("서버 에러.")
+        console.log("서버 에러.")
       } else if (updateCheck === true && post === -2) {
         alert("비밀번호를 입력해주세요.")
       }

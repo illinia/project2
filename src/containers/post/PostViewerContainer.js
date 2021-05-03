@@ -58,7 +58,13 @@ const PostViewerContainer = ({ match, history }) => {
       post={post}
       loading={loading}
       error={error}
-      actionButtons={<PostActionButtons postId={postId} onEdit={onEdit} onRemove={onRemove} />}
+      actionButtons={
+        <PostActionButtons
+          postId={postId}
+          onEdit={onEdit}
+          onRemove={onRemove}
+        />
+      }
     />
   )
 }

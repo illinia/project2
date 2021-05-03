@@ -6,7 +6,7 @@ const SeoulPageBlock = styled.div``;
 const SeoulPage = () => {
   return (
     <SeoulPageBlock>
-      서울페이지
+
     </SeoulPageBlock>
   )
 }

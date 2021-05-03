@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { changeField } from '../../modules/write';
+import { useDispatch, useSelector } from 'react-redux';
+import palette from '../../lib/styles/palette';
 
 const Fullscreen = styled.div`
   position: fixed;
@@ -26,7 +29,7 @@ const AskModalBlock = styled.div`
     margin-bottom: 1rem;
   }
   p {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   .buttons {
     display: flex;
@@ -41,6 +44,14 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const PassInput = styled.input`
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+`;
+
 const AskModal = ({
   visible,
   title,
@@ -50,12 +61,34 @@ const AskModal = ({
   onConfirm,
   onCancel,
 }) => {
+  const dispatch = useDispatch();
+  const { pass } = useSelector(({ write }) => ({
+    pass: write.pass
+  }))
+
+  const onChange = e => {
+    const { value, name } = e.target
+    dispatch(
+      changeField({
+        key: name,
+        value
+      })
+    )
+  }
+
   if (!visible) return null;
   return (
     <Fullscreen>
       <AskModalBlock>
         <h2>{title}</h2>
         <p>{description}</p>
+        <PassInput
+          name="pass"
+          placeholder="비밀번호를 입력해주세요"
+          type="password"
+          value={pass}
+          onChange={onChange}
+        />
         <div className="buttons">
           <StyledButton onClick={onCancel}>{cancelText}</StyledButton>
           <StyledButton cyan onClick={onConfirm}>

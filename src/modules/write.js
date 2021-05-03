@@ -21,6 +21,12 @@ const [
   UPDATE_POST_FAILURE,
 ] = createRequestActionTypes('write/UPDATE_POST');
 
+const [
+  DELETE_POST,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
+] = createRequestActionTypes('delete/DELETE_POST');
+
 export const initialize = createAction(INITIALIZE);
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   key,
@@ -36,10 +42,11 @@ export const writePost = createAction(WRITE_POST, ({ title, content, name, pass 
 
 export const updatePost = createAction(
   UPDATE_POST,
-  ({ no, title, content }) => ({
+  ({ no, title, content, pass }) => ({
     no,
     title,
     content,
+    pass
   })
 )
 

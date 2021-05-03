@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import WriteActionButtons from '../../components/write/WriteActionButtons';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -16,9 +16,21 @@ const WriteActionButtonsContainer = ({ history }) => {
     originalPostId: write.no
   }))
 
+  const [updateCheck, setUpdateCheck] = useState(false);
+
   const onPublish = () => {
     if (originalPostId) {
-      dispatch(updatePost({ title, content, no: originalPostId }))
+      const result = dispatch(
+        updatePost({
+          title,
+          content,
+          no: originalPostId,
+          pass
+        })
+      )
+      if (result.type === "write/UPDATE_POST") {
+        setUpdateCheck(true);
+      }
       return;
     }
     dispatch(
@@ -37,13 +49,21 @@ const WriteActionButtonsContainer = ({ history }) => {
 
   useEffect(() => {
     if (post) {
-      const { no } = post;
-      history.push(`/community/post/${no}`);
+      if (updateCheck === true && post === 1) {
+        alert("업데이트 완료")
+        history.push(`/community/`);
+      } else if (updateCheck === true && post === -1) {
+        alert("비밀번호가 틀립니다.")
+      } else if (updateCheck === true && post === 0) {
+        alert("서버 에러.")
+      } else if (updateCheck === true && post === -2) {
+        alert("비밀번호를 입력해주세요.")
+      }
     }
     if (postError) {
       console.log(postError);
     }
-  }, [history, post, postError])
+  }, [history, post, postError, updateCheck])
 
   return (
     <WriteActionButtons

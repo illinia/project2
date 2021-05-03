@@ -76,42 +76,40 @@ const BodyInput = styled.textarea`
   }
 `;
 
-const Editor = ({ responsive, onChange, onSubmit, title, content, name, pass }) => {
+const Editor = ({ onChange, onSubmit, title, content, name, pass }) => {
   return (
     <>
       <Menu>게시글 작성하기</Menu>
-      <form onSubmit={onSubmit}>
-        <EditorBlock>
-          <TitleInput
-            name="title"
-            placeholder="제목을 입력하세요"
+      <EditorBlock>
+        <TitleInput
+          name="title"
+          placeholder="제목을 입력하세요"
+          onChange={onChange}
+          value={title}
+        />
+        <BodyInput
+          name="content"
+          placeholder="내용을 입력하세요"
+          onChange={onChange}
+          value={content}
+        />
+        <DetailInput>
+          <WriterInput
+            name="name"
+            placeholder="이름을 입력하세요"
             onChange={onChange}
-            value={title}
+            value={name}
           />
-          <BodyInput
-            name="content"
-            placeholder="내용을 입력하세요"
+          <WriterInput
+            name="pass"
+            placeholder="비밀번호를 입력하세요"
+            type="password"
             onChange={onChange}
-            value={content}
+            value={pass}
           />
-          <DetailInput>
-            <WriterInput
-              name="name"
-              placeholder="이름을 입력하세요"
-              onChange={onChange}
-              value={name}
-            />
-            <WriterInput
-              name="pass"
-              placeholder="비밀번호를 입력하세요"
-              type="password"
-              onChange={onChange}
-              value={pass}
-            />
-            <WriteActionButtonsContainer />
-          </DetailInput>
-        </EditorBlock >
-      </form>
+          <WriteActionButtonsContainer />
+        </DetailInput>
+      </EditorBlock >
     </>
   )
 }

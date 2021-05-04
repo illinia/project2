@@ -18,8 +18,42 @@ const PostListBlock = styled.div`
 
 const WritePostButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 1rem;
+`;
+
+const SearchBox = styled.div`
+  width: 270px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const SearchTypeBox = styled.select`
+  width: 60px;
+  height: 20px;
+  outline: none;
+  border: none;
+`;
+
+const SearchInput = styled.input`
+  width: 150px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid ${palette.gray[4]};
+
+  &:active{
+    background: none;
+  }
+`;
+
+const SearchButton = styled(Button)`
+  width: 50px;
+  height: 25px;
+  padding: 0;
+  font-size: 0.875rem;
 `;
 
 const PostItemBlock = styled.div`
@@ -63,7 +97,7 @@ const PostItem = ({ post }) => {
   )
 }
 
-const PostList = ({ posts, loading, error }) => {
+const PostList = ({ posts, loading, error, SearchChange, onSubmit, searchButtonToggle }) => {
   if (error) {
     return <PostListBlock>에러가 발생했습니다.</PostListBlock>
   }
@@ -77,6 +111,28 @@ const PostList = ({ posts, loading, error }) => {
   return (
     <PostListBlock>
       <WritePostButtonWrapper>
+        <SearchBox>
+          <SearchTypeBox
+            onChange={SearchChange}
+            name="type"
+          >
+            <option value="" selected>종류선택</option>
+            <option value="title">제목</option>
+            <option value="name">글쓴이</option>
+            <option value="content">내용</option>
+          </SearchTypeBox>
+          <SearchInput
+            onChange={SearchChange}
+            name="keyword"
+            placeholder="키워드 검색"
+          />
+          <SearchButton
+            to={onSubmit()}
+            disabled={!searchButtonToggle}
+          >
+            검색
+          </SearchButton>
+        </SearchBox>
         <Button cyan to="/community/write">
           새 글 작성하기
         </Button>
@@ -92,4 +148,4 @@ const PostList = ({ posts, loading, error }) => {
   )
 }
 
-export default PostList;
+export default React.memo(PostList);

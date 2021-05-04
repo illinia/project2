@@ -48,6 +48,7 @@ const PassInput = styled.input`
   width: 100%;
   outline: none;
   border: none;
+  border-bottom: 1px solid ${palette.gray[4]};
   font-size: 1.125rem;
   margin-bottom: 1rem;
 `;

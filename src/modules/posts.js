@@ -11,10 +11,19 @@ const [
   LIST_POSTS_FAILURE,
 ] = createRequestActionTypes('posts/LIST_POSTS')
 
+const SEARCH_CHANGE = createRequestActionTypes('posts/SEARCH_CHANGE')
+
 export const listPosts = createAction(
   LIST_POSTS,
   ({ pagenum, type, keyword }) => ({ pagenum, type, keyword }),
 )
+
+export const onSearchChange = createAction(
+  SEARCH_CHANGE,
+  ({ key, value }) => ({
+    key,
+    value
+  }));
 
 const listPostsSaga = createRequestSaga(LIST_POSTS, postsAPI.listPosts)
 export function* postsSaga() {
@@ -24,6 +33,8 @@ export function* postsSaga() {
 const initialState = {
   posts: null,
   error: null,
+  type: '',
+  keyword: '',
 }
 
 const posts = handleActions(
@@ -35,7 +46,11 @@ const posts = handleActions(
     [LIST_POSTS_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error,
-    })
+    }),
+    [SEARCH_CHANGE]: (state, { payload: { key, value } }) => ({
+      ...state,
+      [key]: value,
+    }),
   },
   initialState,
 )

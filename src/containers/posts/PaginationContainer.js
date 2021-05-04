@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import qs from 'qs';
 
-const PaginationContainer = ({ location, match }) => {
+const PaginationContainer = ({ location }) => {
   const { posts, loading } = useSelector(({ posts, loading }) => ({
     posts: posts.posts,
     loading: loading['posts/LIST_POSTS'],

@@ -5,6 +5,7 @@ import Menu from '../../common/Menu';
 import palette from '../../lib/styles/palette';
 import SubInfo from '../common/SubInfo';
 import ReplyShowBox from './ReplyShowBox';
+import ReplyWriteBox from './ReplyWriteBox';
 
 const PostViewerBlock = styled.div`
   width: 800px;
@@ -68,6 +69,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
         </PostHead>
         {actionButtons}
         <PostContent>{content}</PostContent>
+        <ReplyWriteBox />
         <ReplyShowBox />
       </PostViewerBlock>
     </>

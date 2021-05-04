@@ -58,6 +58,13 @@ const WriteActionButtonsContainer = ({ history }) => {
         console.log("서버 에러.")
       } else if (updateCheck === true && post === -2) {
         alert("비밀번호를 입력해주세요.")
+      } else if (post === 1) {
+        alert("글쓰기가 완료되었습니다.")
+        history.push(`/community/`);
+      } else if (post === 0) {
+        alert("글쓰기가 실패하였습니다.")
+      } else if (post === -2) {
+        alert("제목, 내용, 이름, 비밀번호를 입력해주세요.")
       }
     }
     if (postError) {

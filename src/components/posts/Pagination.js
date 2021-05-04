@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import qs from 'qs';
 import Button from '../common/Button';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import palette from '../../lib/styles/palette'
 
 const PaginationBlock = styled.div`
@@ -19,12 +19,16 @@ const PageNumber = styled(Link)`
 
 `;
 
-const buildLink = ({ pagenum }) => {
-  const query = qs.stringify({ pagenum })
-  return `/community?${query}`
-}
+const Pagination = ({ posts, pagenum, location }) => {
+  const { type, keyword } = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  })
 
-const Pagination = ({ posts, pagenum }) => {
+  const buildLink = ({ pagenum }) => {
+    const query = qs.stringify({ pagenum, type, keyword })
+    return `/community?${query}`
+  }
+
   const pageCount = posts["pageCount"]
   let pageList = []
   for (var i = 1; i < 11; i++) {
@@ -73,4 +77,4 @@ const Pagination = ({ posts, pagenum }) => {
   )
 }
 
-export default Pagination;
+export default withRouter(Pagination);

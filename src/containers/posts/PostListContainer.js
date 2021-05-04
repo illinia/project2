@@ -1,19 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
-import { listPosts } from '../../modules/posts';
+import { listPosts, onSearchChange } from '../../modules/posts';
 import qs from 'qs';
 
-const PostListContainer = ({ location, match }) => {
+const PostListContainer = ({ location }) => {
   const dispatch = useDispatch();
-  const { posts, error, loading } = useSelector(
+  const { posts, error, loading, type, keyword } = useSelector(
     ({ posts, loading }) => ({
       posts: posts.posts,
       error: posts.error,
-      loading: loading['posts/LIST_POSTS']
+      loading: loading['posts/LIST_POSTS'],
+      type: posts.type,
+      keyword: posts.keyword,
     })
   )
+
+  const SearchChange = e => {
+    const { name, value } = e.target;
+    dispatch(
+      onSearchChange({
+        key: name,
+        value,
+      })
+    )
+  }
+
+  const onSubmit = () => {
+    const query = qs.stringify({ type, keyword })
+    return `/community?${query}`
+  }
 
   useEffect(() => {
     const { pagenum, type, keyword } = qs.parse(location.search, {
@@ -22,11 +39,21 @@ const PostListContainer = ({ location, match }) => {
     dispatch(listPosts({ pagenum, type, keyword }))
   }, [dispatch, location.search])
 
+  const [searchButtonToggle, setSearchButtonToggle] = useState(false);
+
+  useEffect(() => {
+    setSearchButtonToggle((keyword !== "" && type !== "") ? true : false
+    )
+  }, [keyword, type])
+
   return (
     <PostList
       loading={loading}
       error={error}
       posts={posts}
+      SearchChange={SearchChange}
+      onSubmit={onSubmit}
+      searchButtonToggle={searchButtonToggle}
     />
   )
 }

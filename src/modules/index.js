@@ -5,6 +5,7 @@ import loading from './loading';
 import post, { postSaga } from './post';
 import responsive from './responsive';
 import posts, { postsSaga } from './posts';
+//import reply, { replySaga } from './reply';
 
 const rootReducer = combineReducers({
   write,

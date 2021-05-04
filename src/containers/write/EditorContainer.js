@@ -17,9 +17,8 @@ const EditorContainer = () => {
     const { value, name } = e.target;
     dispatch(
       changeField({
-        form: 'posts',
         key: name,
-        value
+        value,
       })
     )
   }

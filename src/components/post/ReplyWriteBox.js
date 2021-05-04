@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-import Button from '../common/Button'
+import ReplyActionButtonsContainer from '../../containers/reply/ReplyActionButtonsContainer';
+import palette from '../../lib/styles/palette';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeField, initialize, replyPosts } from '../../modules/reply';
+import { withRouter } from 'react-router';
+
 
 const ReplyWriteBoxBlock = styled.div`
   width: 700px;
@@ -62,31 +67,103 @@ const ReplyWriteDetailBox = styled.input`
   height: 40px;
 `;
 
-const ReplySubmitButton = styled(Button)`
+const ReplySubmitButton = styled(ReplyActionButtonsContainer)`
   width: 70px;
   height: 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  background: ${palette.cyan[5]};
+
+  &:hover {
+    background: ${palette.cyan[4]};
+  }
 `;
 
 
-const ReplyWriteBox = () => {
+const ReplyWriteBox = ({ history }) => {
+  const dispatch = useDispatch();
+  const { boardno, content, name, pass, post, error } = useSelector(({ reply, post }) => ({
+    boardno: post.post.board.no,
+    content: reply.content,
+    name: reply.name,
+    pass: reply.pass,
+    post: reply.post,
+    error: reply.error,
+  }))
+
+  const onChangeField = e => {
+    const { value, name } = e.target
+    dispatch(
+      changeField({
+        key: name,
+        value,
+      })
+    )
+  }
+
+  const onPublish = () => {
+    const value = boardno
+    dispatch(
+      changeField({
+        key: "boardno",
+        value,
+      })
+    )
+    dispatch(
+      replyPosts({
+        boardno,
+        name,
+        content,
+        pass,
+      })
+    )
+    if (post === 1) {
+      alert("댓글이 등록되었습니다.")
+      history.push(`/community/post/${boardno}`)
+    } else if (post === 0) {
+      alert("댓글등록이 실패하였습니다.")
+      console.log(error)
+    } else if (post === -1) {
+      alert("내용, 이름, 비밀번호는 필수입니다.")
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      dispatch(initialize());
+    }
+  }, [dispatch])
+
   return (
     <ReplyWriteBoxBlock>
       <ReplyWriteContentBox
         name="content"
         placeholder="댓글을 입력해 주세요."
+        onChange={onChangeField}
+        value={content}
       />
       <ReplyWriteDetailBox
         name="name"
         placeholder="이름"
+        onChange={onChangeField}
+        value={name}
       />
       <ReplyWriteDetailBox
         name="pass"
         type="password"
         placeholder="비밀번호"
+        onChange={onChangeField}
+        value={pass}
       />
-      <ReplySubmitButton cyan>등록</ReplySubmitButton>
+      <ReplyActionButtonsContainer cyan onClick={onPublish} />
     </ReplyWriteBoxBlock>
   )
 }
 
-export default ReplyWriteBox;
+export default withRouter(ReplyWriteBox);

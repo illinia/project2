@@ -23,10 +23,6 @@ const EditorContainer = () => {
     )
   }
 
-  const onSubmit = e => {
-    e.preventDefault();
-  }
-
   useEffect(() => {
     return () => {
       dispatch(initialize());
@@ -37,7 +33,6 @@ const EditorContainer = () => {
     <Editor
       responsive={responsive}
       onChange={onChange}
-      onSubmit={onSubmit}
       title={title}
       content={content}
       name={name}

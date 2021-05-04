@@ -53,7 +53,8 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
     )
   }
 
-  const { title, content, name, regDate } = post;
+  const { title, content, name, regDate } = post.board;
+  const { replyList } = post;
 
   return (
     <>
@@ -70,7 +71,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
         {actionButtons}
         <PostContent>{content}</PostContent>
         <ReplyWriteBox />
-        <ReplyShowBox />
+        <ReplyShowBox replyList={replyList} />
       </PostViewerBlock>
     </>
   )

@@ -8,6 +8,13 @@ export const writePost = ({ title, content, name, pass }) => {
   return client.post(`/lulu/community/post?${queryString}`)
 }
 
+export const writeReply = ({ boardno, name, content, pass }) => {
+  const queryString = qs.stringify({
+    boardno, name, content, pass
+  })
+  return client.post(`/lulu/community/post/reply?${queryString}`)
+}
+
 export const readPost = no =>
   client.get(`/lulu/community/post/${no}`);
 

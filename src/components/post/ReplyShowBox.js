@@ -69,25 +69,19 @@ const ReplyContentBox = styled.div`
   }
 `;
 
-const ReplyShowBox = () => {
+const ReplyShowBox = (replyList) => {
   return (
     <>
-      <ReplyShowBoxBlock>
-        <ReplyInfoBox>
-          <ReplyDetailBox>이름</ReplyDetailBox>
-          <ReplyDetailBox>|</ReplyDetailBox>
-          <ReplyDetailBox>2021. 5. 3</ReplyDetailBox>
-        </ReplyInfoBox>
-        <ReplyContentBox>컨텐츠 내용sjflsjdflsjdfljsldjflsjdlkfj</ReplyContentBox>
-      </ReplyShowBoxBlock>
-      <ReplyShowBoxBlock>
-        <ReplyInfoBox>
-          <ReplyDetailBox>이름sdfsdfsfdsdf</ReplyDetailBox>
-          <ReplyDetailBox>|</ReplyDetailBox>
-          <ReplyDetailBox>2021. 5. 3</ReplyDetailBox>
-        </ReplyInfoBox>
-        <ReplyContentBox>컨텐츠 내용sjflsajfjs;dfjsjdfj;lsja;ldfj</ReplyContentBox>
-      </ReplyShowBoxBlock>
+      {replyList.replyList.map(reply => (
+        <ReplyShowBoxBlock>
+          <ReplyInfoBox>
+            <ReplyDetailBox>{reply.name}</ReplyDetailBox>
+            <ReplyDetailBox>|</ReplyDetailBox>
+            <ReplyDetailBox>{new Date(reply.regDate).toLocaleDateString()}</ReplyDetailBox>
+          </ReplyInfoBox>
+          <ReplyContentBox>{reply.content}</ReplyContentBox>
+        </ReplyShowBoxBlock>
+      ))}
     </>
   )
 }

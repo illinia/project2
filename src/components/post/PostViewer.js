@@ -14,6 +14,7 @@ const PostViewerBlock = styled.div`
   padding: 0 50px;
   @media (max-width: 800px) {
     width: 100%;
+    padding: 0 30px;
   }
 `;
 
@@ -53,7 +54,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
     )
   }
 
-  const { title, content, name, regDate } = post.board;
+  const { title, content, name, regDate, cnt } = post.board;
   const { replyList } = post;
 
   return (
@@ -65,6 +66,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
           <SubInfo
             name={name}
             regDate={regDate}
+            cnt={cnt}
             hasMarginTop
           />
         </PostHead>

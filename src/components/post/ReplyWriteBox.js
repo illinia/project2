@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import ReplyActionButtonsContainer from '../../containers/reply/ReplyActionButtonsContainer';
 import palette from '../../lib/styles/palette';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeField, initialize, replyPosts } from '../../modules/reply';
+import { changeField, initialize } from '../../modules/reply';
 import { withRouter } from 'react-router';
+import { writeReply } from '../../lib/api/post';
+import { readPost } from '../../modules/post';
 
 
 const ReplyWriteBoxBlock = styled.div`
@@ -15,17 +17,16 @@ const ReplyWriteBoxBlock = styled.div`
   grid-template-rows: 40px 40px;
   align-items: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 760px) {
     width: 100%;
   }
 
-  @media (max-width: 460px) {
+  @media (max-width: 430px) {
     grid-template-columns: minmax(0, auto) 2fr 2fr 1fr;
-    transition: 0.3s ease-in-out;
     Button {
-      transition: 0.3s ease-in-out;
       width: 50px;
-      font-size: 0.8rem;
+      height: 30px;
+      font-size: 1rem;
       padding: 0;
     }
   }
@@ -88,12 +89,11 @@ const ReplySubmitButton = styled(ReplyActionButtonsContainer)`
 
 const ReplyWriteBox = ({ history }) => {
   const dispatch = useDispatch();
-  const { boardno, content, name, pass, post, error } = useSelector(({ reply, post }) => ({
+  const { boardno, content, name, pass, error } = useSelector(({ reply, post }) => ({
     boardno: post.post.board.no,
     content: reply.content,
     name: reply.name,
     pass: reply.pass,
-    post: reply.post,
     error: reply.error,
   }))
 
@@ -107,7 +107,7 @@ const ReplyWriteBox = ({ history }) => {
     )
   }
 
-  const onPublish = () => {
+  const onPublish = async () => {
     const value = boardno
     dispatch(
       changeField({
@@ -115,30 +115,24 @@ const ReplyWriteBox = ({ history }) => {
         value,
       })
     )
-    dispatch(
-      replyPosts({
-        boardno,
-        name,
-        content,
-        pass,
-      })
-    )
-    if (post === 1) {
+    const result = (await writeReply({
+      boardno,
+      name,
+      content,
+      pass,
+    })).data;
+    if (result === 1) {
       alert("댓글이 등록되었습니다.")
-      history.push(`/community/post/${boardno}`)
-    } else if (post === 0) {
+      dispatch(readPost(boardno))
+      dispatch(initialize());
+    } else if (result === 0) {
       alert("댓글등록이 실패하였습니다.")
       console.log(error)
-    } else if (post === -1) {
+      dispatch(readPost(boardno))
+    } else if (result === -1) {
       alert("내용, 이름, 비밀번호는 필수입니다.")
     }
   }
-
-  useEffect(() => {
-    return () => {
-      dispatch(initialize());
-    }
-  }, [dispatch])
 
   return (
     <ReplyWriteBoxBlock>

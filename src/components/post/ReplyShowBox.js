@@ -11,7 +11,7 @@ const ReplyShowBoxBlock = styled.div`
   align-items: center;
   font-size: 0.875rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
     width: 100%;
     grid-template-columns: 100%;
     grid-template-rows: 20px 30px;
@@ -30,7 +30,7 @@ const ReplyDetailBox = styled.div`
   & + & {
     margin-left: 0.5rem;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
     &.first-child {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
@@ -48,7 +48,7 @@ const ReplyInfoBox = styled.div`
   display: flex;
   justify-content: flex-start;
 
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
     justify-content: flex-start;
   }
 `;
@@ -62,7 +62,7 @@ const ReplyContentBox = styled.div`
   align-items: center;
   padding: 0 1rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     padding: 0;

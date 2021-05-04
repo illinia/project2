@@ -4,7 +4,7 @@ import Button from '../../components/common/Button';
 const ReplyActionButtonsContainer = ({ ...rest }) => {
   return (
     <Button {...rest}>
-      테스트
+      등록
     </Button>
   )
 }

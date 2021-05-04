@@ -5,7 +5,7 @@ import loading from './loading';
 import post, { postSaga } from './post';
 import responsive from './responsive';
 import posts, { postsSaga } from './posts';
-import reply, { replySaga } from './reply';
+import reply from './reply';
 
 const rootReducer = combineReducers({
   write,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 })
 
 export function* rootSaga() {
-  yield all([writeSaga(), postSaga(), postsSaga(), replySaga()]);
+  yield all([writeSaga(), postSaga(), postsSaga()]);
 }
 
 export default rootReducer;

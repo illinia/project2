@@ -19,19 +19,28 @@ const PostListBlock = styled.div`
 const WritePostButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 `;
 
 const SearchBox = styled.div`
   width: 270px;
   height: 30px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 500px) {
+    width: 100px;
+    height: 100px;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
 `;
 
 const SearchTypeBox = styled.select`
-  width: 60px;
+  width: 70px;
   height: 20px;
   outline: none;
   border: none;
@@ -46,6 +55,10 @@ const SearchInput = styled.input`
 
   &:active{
     background: none;
+  }
+
+  @media (max-width: 500px) {
+    width: 100px;
   }
 `;
 
@@ -86,12 +99,12 @@ const TitleBlock = styled(Link)`
 `;
 
 const PostItem = ({ post }) => {
-  const { regDate, name, title, content, no } = post
+  const { regDate, name, title, content, no, cnt } = post
 
   return (
     <PostItemBlock>
       <TitleBlock to={`/community/post/${no}`}>{title}</TitleBlock>
-      <SubInfo no={no} name={name} regDate={new Date(regDate)} />
+      <SubInfo no={no} name={name} regDate={new Date(regDate)} cnt={cnt} />
       <p>{content}</p>
     </PostItemBlock>
   )

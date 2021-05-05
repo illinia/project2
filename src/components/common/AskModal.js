@@ -61,22 +61,9 @@ const AskModal = ({
   cancelText = '취소',
   onConfirm,
   onCancel,
+  onChangeFunction,
+  pass
 }) => {
-  const dispatch = useDispatch();
-  const { pass } = useSelector(({ write }) => ({
-    pass: write.pass
-  }))
-
-  const onChange = e => {
-    const { value, name } = e.target
-    dispatch(
-      changeField({
-        key: name,
-        value
-      })
-    )
-  }
-
   if (!visible) return null;
   return (
     <Fullscreen>
@@ -88,7 +75,7 @@ const AskModal = ({
           placeholder="비밀번호를 입력해주세요"
           type="password"
           value={pass}
-          onChange={onChange}
+          onChange={onChangeFunction}
         />
         <div className="buttons">
           <StyledButton onClick={onCancel}>{cancelText}</StyledButton>

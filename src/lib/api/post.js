@@ -41,4 +41,11 @@ export const removePost = ({ no, pass }) => {
   return client.delete(`/lulu/community/post/${no}?${queryString}`)
 }
 
+export const replyDelete = ({ replyNo, pass }) => {
+  const queryString = qs.stringify({
+    pass
+  })
+  return client.delete(`/lulu/community/post/reply/${replyNo}?${queryString}`)
+}
+
 //localhost:8080/lulu/community?pagenum=1&type=title&keyword=테스

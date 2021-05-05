@@ -28,12 +28,13 @@ const ActionButton = styled.button`
   }
 `;
 
-const PostActionButtons = ({ postId, onEdit, onRemove }) => {
+const PostActionButtons = ({ postId, onEdit, onRemove, initialize }) => {
   const [modal, setModal] = useState(false);
   const onRemoveClick = () => {
     setModal(true);
   }
   const onCancel = () => {
+    initialize()
     setModal(false);
   }
   const onConfirm = () => {
@@ -44,7 +45,7 @@ const PostActionButtons = ({ postId, onEdit, onRemove }) => {
   return (
     <>
       <PostActionButtonsBlock>
-        <ActionButton onClick={onEdit}>수정</ActionButton>
+        <ActionButton value={postId} onClick={onEdit}>수정</ActionButton>
         <ActionButton onClick={onRemoveClick}>삭제</ActionButton>
       </PostActionButtonsBlock>
       <AskRemoveModal

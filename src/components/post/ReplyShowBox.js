@@ -1,23 +1,36 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
+import { replyDelete } from '../../lib/api/post';
 import palette from '../../lib/styles/palette';
+import { initialize } from '../../modules/write';
+import PostActionButtons from './PostActionButtons';
+import { withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { editShow } from '../../modules/reply';
+
+const ReplyBoxBlock = styled.div`
+  
+`;
 
 const ReplyShowBoxBlock = styled.div`
   width: 700px;
-  height: 40px;
+  min-height: 30px;
   display: grid;
   grid-template-columns: 200px auto;
   justify-content: flex-start;
   align-items: center;
   font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  border-top: 1px solid ${palette.gray[2]};
+  padding-top: 0.5rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     width: 100%;
     grid-template-columns: 100%;
-    grid-template-rows: 20px 30px;
+    grid-template-rows: 20px auto;
     justify-content: flex-start;
     align-items: center;
-    height: 60px;
+    min-height: 60px;
   }
 `;
 
@@ -55,12 +68,12 @@ const ReplyInfoBox = styled.div`
 
 const ReplyContentBox = styled.div`
   width: 400px;
-  height: 20px;
   color: black;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 0 1rem;
+  word-break: break-all;
 
   @media (max-width: 600px) {
     grid-column: 1 / 2;
@@ -69,21 +82,67 @@ const ReplyContentBox = styled.div`
   }
 `;
 
-const ReplyShowBox = (replyList) => {
+const ReplyShowBox = (replyList, history) => {
+  const dispatch = useDispatch();
+  const { password, content, name, editShowCheck } = useSelector(({ write, reply }) => ({
+    password: write.pass,
+    content: reply.content,
+    name: reply.name,
+    editShowCheck: reply.editShow
+  }))
+  const onRemove = async (replyNo) => {
+    const pass = password
+    try {
+      const result = (await replyDelete({ replyNo, pass })).data
+      console.log(result)
+      if (result === -2) {
+        alert("비밀번호를 입력해주세요")
+        history.back();
+      } else if (result === -1) {
+        alert("비밀번호가 틀립니다.")
+        history.back();
+      } else if (result === 0) {
+        console.log("서버 에러가 발생하였습니다.")
+        history.push('/community');
+      }
+      dispatch(initialize());
+      alert("삭제되었습니다.");
+      history.back();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const onEditShow = e => {
+    dispatch(editShow(e.target.value))
+  }
+
+  const initializeFunction = () => {
+    dispatch(initialize());
+  }
+
   return (
     <>
-      {replyList.replyList.map(reply => (
-        <ReplyShowBoxBlock>
-          <ReplyInfoBox>
-            <ReplyDetailBox>{reply.name}</ReplyDetailBox>
-            <ReplyDetailBox>|</ReplyDetailBox>
-            <ReplyDetailBox>{new Date(reply.regDate).toLocaleDateString()}</ReplyDetailBox>
-          </ReplyInfoBox>
-          <ReplyContentBox>{reply.content}</ReplyContentBox>
-        </ReplyShowBoxBlock>
-      ))}
+      {replyList.replyList.map(reply =>
+        <ReplyBoxBlock key={reply.no}>
+          <ReplyShowBoxBlock>
+            <ReplyInfoBox>
+              <ReplyDetailBox>{reply.name}</ReplyDetailBox>
+              <ReplyDetailBox>|</ReplyDetailBox>
+              <ReplyDetailBox>{new Date(reply.regDate).toLocaleDateString()}</ReplyDetailBox>
+            </ReplyInfoBox>
+            <ReplyContentBox>{reply.content}</ReplyContentBox>
+          </ReplyShowBoxBlock>
+          <PostActionButtons
+            postId={reply.no}
+            onRemove={onRemove}
+            onEdit={onEditShow}
+            initialize={initializeFunction}
+          />
+        </ReplyBoxBlock>
+      )}
     </>
   )
 }
 
-export default ReplyShowBox;
+export default withRouter(ReplyShowBox);

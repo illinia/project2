@@ -17,7 +17,7 @@ const ReplyWriteBoxBlock = styled.div`
   grid-template-rows: 40px 40px;
   align-items: center;
 
-  @media (max-width: 760px) {
+  @media (max-width: 800px) {
     width: 100%;
   }
 

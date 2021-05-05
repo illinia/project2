@@ -53,6 +53,10 @@ const PostViewerContainer = ({ match, history }) => {
     }
   }
 
+  const initializeFunction = () => {
+    dispatch(initialize());
+  }
+
   return (
     <PostViewer
       post={post}
@@ -63,6 +67,7 @@ const PostViewerContainer = ({ match, history }) => {
           postId={postId}
           onEdit={onEdit}
           onRemove={onRemove}
+          initialize={initializeFunction}
         />
       }
     />

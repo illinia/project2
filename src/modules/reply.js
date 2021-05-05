@@ -7,12 +7,14 @@ import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE = 'reply/INITIALIZE';
 const CHANGE_FIELD = 'reply/CHANGE_FIELD';
+const EDIT_SHOW = 'reply/EDIT_SHOW';
 
 export const initialize = createAction(INITIALIZE);
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   key,
   value,
 }))
+export const editShow = createAction(EDIT_SHOW, value => value)
 
 const initialState = {
   post: null,
@@ -21,6 +23,7 @@ const initialState = {
   content: '',
   name: '',
   pass: '',
+  editShow: '',
 }
 
 const reply = handleActions(
@@ -29,6 +32,10 @@ const reply = handleActions(
     [CHANGE_FIELD]: (state, { payload: { key, value } }) => ({
       ...state,
       [key]: value,
+    }),
+    [EDIT_SHOW]: (state, { payload: value }) => ({
+      ...state,
+      editShow: value,
     })
   },
   initialState,

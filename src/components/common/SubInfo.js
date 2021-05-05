@@ -39,10 +39,11 @@ const CountInfoBlock = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-size: 0.875rem;
 
   @media (max-width: 300px) {
     width: 80px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 `;
 

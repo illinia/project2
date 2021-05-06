@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
-import { listPosts, onSearchChange } from '../../modules/posts';
+import { initializeSearch, listPosts, onSearchChange } from '../../modules/posts';
 import qs from 'qs';
+import { initializeUpdate } from '../../modules/replyUpdate';
+import { editShowInitialize } from '../../modules/reply';
 
 const PostListContainer = ({ location }) => {
   const dispatch = useDispatch();
@@ -37,6 +39,7 @@ const PostListContainer = ({ location }) => {
       ignoreQueryPrefix: true,
     })
     dispatch(listPosts({ pagenum, type, keyword }))
+    dispatch(initializeSearch())
   }, [dispatch, location.search])
 
   const [searchButtonToggle, setSearchButtonToggle] = useState(false);

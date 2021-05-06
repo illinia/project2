@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import ChartSize from '../../common/ChartSize';
 
-const WorldPageBlock = styled.div``;
+const WorldPageBlock = styled(ChartSize)``;
 
 const WorldPage = () => {
   return (

@@ -23,7 +23,7 @@ const App = ({ location }) => {
       <Header category={pathName[1]} />
       <Route component={CommunityPage} path="/community" exact />
       <Route component={InfoPage} path="/infoPage" exact />
-      <Route component={LinkPage} path="/pages" exact />
+      <Route component={LinkPage} path="/pages" />
       <Route component={MainPage} path="/main" />
       <Route component={MainPage} path="/" exact />
       <Route component={NewsPage} path="/news" exact />

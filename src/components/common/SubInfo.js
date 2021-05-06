@@ -14,7 +14,7 @@ const SubInfoBlock = styled.div`
 `;
 
 const SubInfoLeft = styled.div`
-  width: 150px;
+  min-width: 150px;
   height: 20px;
   span + span:before {
     color: ${palette.gray[4]};

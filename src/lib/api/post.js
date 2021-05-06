@@ -34,6 +34,9 @@ export const updatePost = ({ no, title, content, pass }) => {
   return client.post(`/lulu/community/post/${no}?${queryString}`)
 }
 
+export const updateReply = ({ replyNo, contentUpdate, passUpdate }) =>
+  client.post(`/lulu/community/post/reply/${replyNo}?content=${contentUpdate}&pass=${passUpdate}`)
+
 export const removePost = ({ no, pass }) => {
   const queryString = qs.stringify({
     pass

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 const TabBlock = styled(Link)`
-  width: 30%;
+  width: 100%;
   font-size: 1.25rem;
   display: flex;
   justify-content: center;
@@ -19,6 +19,10 @@ const TabBlock = styled(Link)`
     props.active && css`
       border-bottom: 2px solid rgb(51, 51, 51);
   `}
+
+  @media (max-width: 800px) {
+    font-size: 1.125rem;
+  }
 `;
 
 const Tab = ({ match, children, active, path, location }) => {
@@ -31,7 +35,10 @@ const Tab = ({ match, children, active, path, location }) => {
   const locationpath = locationsplit[2]
 
   return (
-    <TabBlock active={path === locationpath || active} to={`${matchpath}/${path}`}>
+    <TabBlock
+      active={path === locationpath || active}
+      to={`${matchpath}/${path}`}
+    >
       {children}
     </TabBlock>
   )

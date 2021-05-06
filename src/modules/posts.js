@@ -5,13 +5,15 @@ import createRequestSaga, {
 import { takeLatest } from 'redux-saga/effects';
 import * as postsAPI from '../lib/api/post';
 
+const INITIALIZE_SEARCH = createRequestActionTypes('posts/INITIALIZE_SEARCH')
 const [
   LIST_POSTS,
   LIST_POSTS_SUCCESS,
   LIST_POSTS_FAILURE,
 ] = createRequestActionTypes('posts/LIST_POSTS')
-
 const SEARCH_CHANGE = createRequestActionTypes('posts/SEARCH_CHANGE')
+
+export const initializeSearch = createAction(INITIALIZE_SEARCH)
 
 export const listPosts = createAction(
   LIST_POSTS,
@@ -39,6 +41,7 @@ const initialState = {
 
 const posts = handleActions(
   {
+    [INITIALIZE_SEARCH]: state => initialState,
     [LIST_POSTS_SUCCESS]: (state, { payload: posts }) => ({
       ...state,
       posts,

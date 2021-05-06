@@ -6,6 +6,7 @@ import post, { postSaga } from './post';
 import responsive from './responsive';
 import posts, { postsSaga } from './posts';
 import reply from './reply';
+import replyUpdate from './replyUpdate';
 
 const rootReducer = combineReducers({
   write,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   post,
   responsive,
   posts,
-  reply
+  reply,
+  replyUpdate
 })
 
 export function* rootSaga() {

@@ -36,7 +36,7 @@ const post = handleActions(
       ...state,
       error,
     }),
-    [UNLOAD_POST]: () => initialState,
+    [UNLOAD_POST]: state => initialState,
   },
   initialState,
 )

@@ -6,6 +6,8 @@ import PostViewer from '../../components/post/PostViewer';
 import PostActionButtons from '../../components/post/PostActionButtons';
 import { initialize, setOriginalPost } from '../../modules/write';
 import { removePost } from '../../lib/api/post';
+import { editShowInitialize } from '../../modules/reply';
+import { initializeUpdate } from '../../modules/replyUpdate';
 
 const PostViewerContainer = ({ match, history }) => {
   const { postId } = match.params;
@@ -19,14 +21,16 @@ const PostViewerContainer = ({ match, history }) => {
 
   useEffect(() => {
     dispatch(readPost(postId));
+    dispatch(editShowInitialize())
+    dispatch(initializeUpdate())
 
-    return () => {
-      dispatch(unloadPost());
-    };
+    // return () => {
+    //   dispatch(unloadPost());
+    // };
   }, [dispatch, postId])
 
   const onEdit = () => {
-    dispatch(setOriginalPost(post))
+    dispatch(setOriginalPost(post.board))
     history.push('/community/write')
   }
 

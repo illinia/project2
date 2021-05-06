@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
+/* eslint-disable eqeqeq */
+import React from 'react';
+import styled from 'styled-components';
 import { replyDelete } from '../../lib/api/post';
 import palette from '../../lib/styles/palette';
 import { initialize } from '../../modules/write';
@@ -7,10 +8,10 @@ import PostActionButtons from './PostActionButtons';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editShow } from '../../modules/reply';
+import { readPost } from '../../modules/post';
+import ReplyWriteBox from './ReplyWriteBox';
 
-const ReplyBoxBlock = styled.div`
-  
-`;
+const ReplyBoxBlock = styled.div``;
 
 const ReplyShowBoxBlock = styled.div`
   width: 700px;
@@ -84,11 +85,10 @@ const ReplyContentBox = styled.div`
 
 const ReplyShowBox = (replyList, history) => {
   const dispatch = useDispatch();
-  const { password, content, name, editShowCheck } = useSelector(({ write, reply }) => ({
+  const { boardno, password, editShowState } = useSelector(({ write, reply, post }) => ({
     password: write.pass,
-    content: reply.content,
-    name: reply.name,
-    editShowCheck: reply.editShow
+    boardno: post.post.board.no,
+    editShowState: reply.editShow,
   }))
   const onRemove = async (replyNo) => {
     const pass = password
@@ -107,13 +107,18 @@ const ReplyShowBox = (replyList, history) => {
       }
       dispatch(initialize());
       alert("삭제되었습니다.");
-      history.back();
+      console.log(boardno)
+      dispatch(readPost(boardno))
     } catch (e) {
       console.log(e);
     }
   }
 
   const onEditShow = e => {
+    if (e.target.value == editShowState) {
+      dispatch(editShow(""))
+      return
+    }
     dispatch(editShow(e.target.value))
   }
 
@@ -124,22 +129,29 @@ const ReplyShowBox = (replyList, history) => {
   return (
     <>
       {replyList.replyList.map(reply =>
-        <ReplyBoxBlock key={reply.no}>
-          <ReplyShowBoxBlock>
-            <ReplyInfoBox>
-              <ReplyDetailBox>{reply.name}</ReplyDetailBox>
-              <ReplyDetailBox>|</ReplyDetailBox>
-              <ReplyDetailBox>{new Date(reply.regDate).toLocaleDateString()}</ReplyDetailBox>
-            </ReplyInfoBox>
-            <ReplyContentBox>{reply.content}</ReplyContentBox>
-          </ReplyShowBoxBlock>
-          <PostActionButtons
-            postId={reply.no}
-            onRemove={onRemove}
-            onEdit={onEditShow}
-            initialize={initializeFunction}
+        <>
+          <ReplyBoxBlock key={reply.no}>
+            <ReplyShowBoxBlock>
+              <ReplyInfoBox>
+                <ReplyDetailBox>{reply.name}</ReplyDetailBox>
+                <ReplyDetailBox>|</ReplyDetailBox>
+                <ReplyDetailBox>{new Date(reply.regDate).toLocaleDateString()}</ReplyDetailBox>
+              </ReplyInfoBox>
+              <ReplyContentBox>{reply.content}</ReplyContentBox>
+            </ReplyShowBoxBlock>
+            <PostActionButtons
+              postId={reply.no}
+              onRemove={onRemove}
+              onEdit={onEditShow}
+              initialize={initializeFunction}
+              editShow={editShowState}
+            />
+          </ReplyBoxBlock>
+          <ReplyWriteBox
+            replyNo={reply.no}
+            editShow={editShowState}
           />
-        </ReplyBoxBlock>
+        </>
       )}
     </>
   )

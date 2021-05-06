@@ -76,10 +76,15 @@ const BodyInput = styled.textarea`
   }
 `;
 
-const Editor = ({ onChange, onSubmit, title, content, name, pass }) => {
+const Editor = ({ onChange, title, content, name, pass, originalPostIdCheck }) => {
   return (
     <>
-      <Menu>게시글 작성하기</Menu>
+      <Menu>
+        {!!originalPostIdCheck ?
+          "게시글 수정하기" :
+          "게시글 작성하기"
+        }
+      </Menu>
       <EditorBlock>
         <TitleInput
           name="title"

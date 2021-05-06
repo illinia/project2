@@ -3,14 +3,17 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 
 const NewsItemBlock = styled.div`
-  display: flex;
+  display: grid;
+  height: 154px;
+  grid-template-columns: 160px auto;
+  column-gap: 1rem;
 
   .thumbnail {
     display: flex;
     flex-direction: column;
     justify-content:center;
-    margin-right: 1rem;
     height: inherit;
+    grid-column: 1 / 2;
 
     img {
       display: block;
@@ -22,6 +25,7 @@ const NewsItemBlock = styled.div`
   }
 
   .content {
+    grid-column: 2 / 3;
     h4 {
       font-size: 1.125rem;
       margin: 0.5rem 0;

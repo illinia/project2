@@ -29,7 +29,6 @@ const NewsList = () => {
           'https://newsapi.org/v2/top-headlines?country=kr&category=health&apiKey=628feb52906a47e2bdfff2ecab2c80eb'
         )
         setArticles(response.data.articles);
-        console.log(response);
       } catch (e) {
         console.log(e);
       }

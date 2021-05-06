@@ -13,6 +13,10 @@ const PaginationBlock = styled.div`
   margin-bottom: 3rem;
 `;
 const PageNumber = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: ${props =>
     !props.active ? "black" : `${palette.gray[6]}`
   };

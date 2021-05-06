@@ -25,7 +25,7 @@ const categories = [
   },
   {
     name: 'pages',
-    text: '참고사이트'
+    text: '병원 안내'
   }
 ]
 

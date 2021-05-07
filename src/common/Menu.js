@@ -8,6 +8,9 @@ const MenuBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 500px) {
+    height: 60px;
+  }
 `;
 
 const MenuBox = styled.div`
@@ -23,10 +26,15 @@ const MenuBox = styled.div`
 `;
 
 const MenuTitle = styled.div`
-  width: 300px;
+  min-width: 250px;
   height: 48px;
   font-size: 2rem;
   margin-bottom: 10px;
+  @media (max-width: 500px) {
+    width: 250px;
+    height: 30px;
+    font-size: 1.25rem;
+  }
 `;
 
 const Line = styled.div`

@@ -11,10 +11,13 @@ const [
   LIST_HOSPITAL_SUCCESS,
   LIST_HOSPITAL_FAILURE,
 ] = createRequestActionTypes('hospital/LIST_HOSPITAL')
+const SEARCH_CHANGE = createRequestActionTypes('hospital/SEARCH_CHANGE')
+
+export const initializeSearch = createAction(INITIALIZE_HOSPITAL);
 
 export const listHospital = createAction(
   LIST_HOSPITAL,
-  ({ pageno, pagenum }) => ({ pageno, pagenum })
+  ({ pageno, pagenum, type, keyword }) => ({ pageno, pagenum, type, keyword })
 )
 
 const listHospitalSaga = createRequestSaga(LIST_HOSPITAL, hospitalAPI.listHospitals)
@@ -22,9 +25,18 @@ export function* hospitalSaga() {
   yield takeLatest(LIST_HOSPITAL, listHospitalSaga)
 }
 
+export const onSearchChange = createAction(
+  SEARCH_CHANGE,
+  ({ key, value }) => ({
+    key, value
+  })
+)
+
 const initialState = {
   list: null,
   error: null,
+  type: '',
+  keyword: '',
 }
 
 const hospital = handleActions(
@@ -37,6 +49,10 @@ const hospital = handleActions(
     [LIST_HOSPITAL_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error
+    }),
+    [SEARCH_CHANGE]: (state, { payload: { key, value } }) => ({
+      ...state,
+      [key]: value,
     })
   },
   initialState,

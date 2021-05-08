@@ -9,6 +9,7 @@ import Vaccinsenter from '../components/linkPage/Vaccinsenter';
 
 const LinkPage = ({ match, location }) => {
   const category = location.pathname
+
   return (
     <>
       <DetailTab category={category} />
@@ -18,6 +19,7 @@ const LinkPage = ({ match, location }) => {
       <Route path={`${match.path}/selecth`} component={Selecth} />
       <Route path={`${match.path}/selecthcar`} component={Selecthcar} />
       <Route path={`${match.path}/vaccinsenter`} component={Vaccinsenter} />
+
     </>
   )
 }

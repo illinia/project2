@@ -43,9 +43,9 @@ const Line = styled.div`
   border: 1px solid ${palette.gray[4]};
 `;
 
-const Menu = ({ children }) => {
+const Menu = ({ children, ...rest }) => {
   return (
-    <MenuBlock>
+    <MenuBlock {...rest}>
       <MenuBox>
         <MenuTitle>{children}</MenuTitle>
         <Line />

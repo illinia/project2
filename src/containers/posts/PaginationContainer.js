@@ -20,6 +20,7 @@ const PaginationContainer = ({ location }) => {
     <Pagination
       pagenum={parseInt(pagenum, 10)}
       posts={posts}
+      pageCheck="community"
     />
   )
 }

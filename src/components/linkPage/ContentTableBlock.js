@@ -26,7 +26,7 @@ const ContentTableBlock = ({ children }) => {
   return (
     <ContentTableBlockBlock>
       {children.map(list => (
-        <ContentTable key={list._id}>{list}</ContentTable>
+        <ContentTable>{list}</ContentTable>
       ))}
     </ContentTableBlockBlock>
   )

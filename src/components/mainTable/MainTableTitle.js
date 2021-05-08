@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 
-const MainTableContentBlock = styled.div`
+const MainTableTitleBlock = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
   grid-template-rows: 30px;
@@ -11,7 +11,9 @@ const MainTableContentBlock = styled.div`
   align-items: center;
   width: 100vw;
   margin: 0 auto;
+  margin-top: 2rem;
   font-size: 0.875rem;
+  font-weight: 600;
 `;
 
 const MainTableCell = styled.div`
@@ -20,18 +22,19 @@ const MainTableCell = styled.div`
   align-items: center;
   width: 150px;
   height: 30px;
-  border-bottom: 1px solid ${palette.gray[4]};
+  border-top: 2px solid ${palette.gray[6]};
+  border-bottom: 1px solid ${palette.gray[6]};
   font-weight: 400; 
 `;
 
-const MainTableContent = ({ jsonList }) => {
+const MainTableTitle = ({ jsonList }) => {
   return (
-    <MainTableContentBlock>
+    <MainTableTitleBlock>
       {jsonList.map(list => (
         <MainTableCell>{list}</MainTableCell>
       ))}
-    </MainTableContentBlock>
+    </MainTableTitleBlock>
   )
 }
 
-export default MainTableContent;
+export default MainTableTitle;

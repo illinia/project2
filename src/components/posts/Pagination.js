@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from 'react';
 import styled from 'styled-components';
 import qs from 'qs';
@@ -6,7 +7,7 @@ import { Link, withRouter } from 'react-router-dom';
 import palette from '../../lib/styles/palette'
 
 const PaginationBlock = styled.div`
-  width: 320px;
+  width: 420px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -23,14 +24,19 @@ const PageNumber = styled(Link)`
 
 `;
 
-const Pagination = ({ posts, pagenum, location }) => {
+const Pagination = ({ posts, pagenum, location, pageCheck, pathName }) => {
   const { type, keyword } = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   })
 
   const buildLink = ({ pagenum }) => {
     const query = qs.stringify({ pagenum, type, keyword })
-    return `/community?${query}`
+    if (pageCheck == "community") {
+      return `/community?${query}`
+    } else if (pageCheck == "hospital") {
+      return `/pages/${pathName}?${query}`
+    }
+
   }
 
   const pageCount = posts["pageCount"]

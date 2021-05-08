@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menu from '../common/Menu';
+import Button from '../components/common/Button';
 
 const Page = styled.div`
   max-width: 900px;
@@ -44,6 +45,7 @@ const InfoPage = () => {
   return (
     <>
       <Menu>코로나란?</Menu>
+      <button onClick={() => window.open('http://localhost:8080/maptest/maptest/index.html')}>맵띄우기</button>
       <Page>
         <img src="http://ncov.mohw.go.kr/static/image/content/baroview_poster3.png" alt="img 로딩중..." />
         <SmallPage>

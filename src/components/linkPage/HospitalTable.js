@@ -5,6 +5,7 @@ import ContentTableBlock from './ContentTableBlock';
 import TitleTableBlock from './TitleTableBlock';
 import Loading from '../../common/Loading';
 import palette from '../../lib/styles/palette';
+import map from '../map/map'
 
 const HospitalTableBlock = styled.div`
   width: 100%;
@@ -36,6 +37,8 @@ const HospitalTable = ({ titleList, hospitalPageList, loading }) => {
     )
   }
 
+
+
   return (
     <HospitalTableBlock>
       <TitleTableBlock>
@@ -44,8 +47,8 @@ const HospitalTable = ({ titleList, hospitalPageList, loading }) => {
       {!loading && hospitalPageList && (
         <>
           {hospitalPageList.hospitalList.map(list => (
-            <ContentTableBlock key={list._id}>
-              {list.no}{list.sido}{list.address}{list.name}{list.callNum}{<MapButton>버튼</MapButton>}
+            <ContentTableBlock key={list.no}>
+              {list.no}{list.sido}{list.address}{list.name}{list.callNum}{<MapButton onClick={() => window.open(map)}>버튼</MapButton>}
             </ContentTableBlock>
           ))}
         </>

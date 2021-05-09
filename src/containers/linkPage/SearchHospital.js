@@ -110,14 +110,14 @@ const SearchHospital = ({ location }) => {
           onChange={SearchChange}
           name="type"
         >
-          <option value="">종류선택</option>
+          <option value="">검색종류</option>
           <option value="name">기관명</option>
           <option value="address">주소</option>
         </SearchTypeBox>
         <SearchInput
           onChange={SearchChange}
           name="keyword"
-          placeholder="키워드 검색"
+          placeholder="종류를 선택해주세요"
         />
         <SearchButton
           to={onSubmit()}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
-import Menu from '../../common/Menu';
 import HospitalList from '../../containers/linkPage/HospitalList';
 import PaginationContainer from '../../containers/linkPage/PaginationContainer';
 import SearchHospital from '../../containers/linkPage/SearchHospital';

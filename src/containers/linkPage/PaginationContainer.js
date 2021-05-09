@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import qs from 'qs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
-import { initializeSearch, listHospital, onSearchChange } from '../../modules/hospital';
 import Pagination from '../../components/posts/Pagination';
 
 const PaginationContainer = ({ location, pathName }) => {

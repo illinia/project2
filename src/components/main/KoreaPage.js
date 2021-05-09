@@ -8,11 +8,18 @@ import gender from '../../json/gender.json'
 import age from '../../json/age.json'
 import MainTableTitle from '../mainTable/MainTableTitle';
 import MainTableContent from '../mainTable/MainTableContent';
+import checkpieChart from './img/checkpie.png';
+import addcntChart from './img/addcnt.png';
+import confcntChart from './img/confcnt.png';
+import stateChart from './img/state.png';
+import statepieChart from './img/statepie.png';
+import ageChart from './img/age.png';
+import genderChart from './img/gender.png';
+import TableTitle from '../common/TableTitle';
+
 
 const KoreaPageBlock = styled(ChartSize)`
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+
 `;
 
 const KoreaPage = () => {
@@ -31,31 +38,40 @@ const KoreaPage = () => {
 
   return (
     <KoreaPageBlock>
-      <div>
-        <MainTableTitle jsonList={korea1JsonTitle} />
-        <MainTableContent jsonList={Object.values(korea1Json)} />
-        <MainTableTitle jsonList={korea2JsonTitle} />
-        <MainTableContent jsonList={Object.values(korea2Json)} />
-        <MainTableTitle jsonList={stateJsonTitle} />
-        {stateJson.map(list => (
-          <>
-            <MainTableContent jsonList={Object.values(list)} />
-          </>
-        ))}
-        <MainTableTitle jsonList={genderJsonTitle} />
-        {genderJson.map(list => (
-          <>
-            <MainTableContent jsonList={Object.values(list)} />
-          </>
-        ))}
-        <MainTableTitle jsonList={ageJsonTitle} />
-        {ageJson.map(list => (
-          <>
-            <MainTableContent jsonList={Object.values(list)} />
-          </>
-        ))}
+      <img src={checkpieChart} alt="로딩중" />
+      <img src={addcntChart} alt="로딩중" />
+      <img src={confcntChart} alt="로딩중" />
+      <img src={stateChart} alt="로딩중" />
+      <img src={statepieChart} alt="로딩중" />
+      <img src={ageChart} alt="로딩중" />
+      <img src={genderChart} alt="로딩중" />
+      <TableTitle>코로나 검사 현황</TableTitle>
+      <MainTableTitle jsonList={korea1JsonTitle} />
+      <MainTableContent jsonList={Object.values(korea1Json)} />
+      <MainTableTitle jsonList={korea2JsonTitle} />
+      <MainTableContent jsonList={Object.values(korea2Json)} />
+      <TableTitle>코로나 시.도 발생 현황</TableTitle>
+      <MainTableTitle jsonList={stateJsonTitle} />
+      {stateJson.map(list => (
+        <>
+          <MainTableContent jsonList={Object.values(list)} />
+        </>
+      ))}
+      <TableTitle>연령별 코로나 확진 현황</TableTitle>
+      <MainTableTitle jsonList={ageJsonTitle} />
+      {ageJson.map(list => (
+        <>
+          <MainTableContent jsonList={Object.values(list)} />
+        </>
+      ))}
+      <TableTitle>성별별 코로나 확진 현황</TableTitle>
+      <MainTableTitle jsonList={genderJsonTitle} />
+      {genderJson.map(list => (
+        <>
+          <MainTableContent jsonList={Object.values(list)} />
+        </>
+      ))}
 
-      </div>
       {/* <img src="http://127.0.0.1:9800/static/img/seoulareabar.png" alt="로딩안됨" />
       <img src="http://127.0.0.1:9800/static/img/seoulareabar1.png" alt="로딩안됨" />
       <img src="http://127.0.0.1:9800/static/img/seoulareabar2.png" alt="로딩안됨" />

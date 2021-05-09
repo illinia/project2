@@ -63,6 +63,7 @@ const Pagination = ({ posts, pagenum, location, pageCheck, pathName }) => {
       </Button>
       {pageList.map(page => (
         <PageNumber
+          key={page._id}
           to={pagenum !== page ?
             buildLink({ pagenum: page }) :
             buildLink({ pagenum: pagenum })

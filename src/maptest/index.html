@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viemport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+
+    <title>마커에 인포윈도우 표시하기</title>
+
+</head>
+
+
+<body>
+    
+    
+<div id="map" style="width:100%;height:750px;"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=090d53c1a02020950f66bb56e500c6c5&libraries=clusterer"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(36.455182, 127,847504), // 지도의 중심좌표
+        level: 12 // 지도의 확대 레벨
+    };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+
+  // 마커 클러스터러를 생성합니다 
+  var clusterer = new kakao.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+        minLevel: 12 // 클러스터 할 최소 지도 레벨 
+    });
+
+    $(document).ready(function(){
+            console.log('start');
+               // 선별진료소 DB
+                $.get("./selecth.json", function(positions){
+                
+                    var markers = $(positions).map(function(i, position) {
+                        var marker = new kakao.maps.Marker({
+                            position : new kakao.maps.LatLng(position.lat, position.lng)
+                    });
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: position.name,
+                    removable: true
+                        });
+                        
+                        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                        return marker;
+                       
+                            });
+                            clusterer.addMarkers(markers);
+
+                        });
+
+                    });
+  
+        
+              $(document).ready(function(){
+            console.log('start');
+//선별진료소 승차검진
+                $.get("./selecthcar.json", function(positions){
+                
+                    var markers = $(positions).map(function(i, position) {
+                        var marker = new kakao.maps.Marker({
+                            position : new kakao.maps.LatLng(position.lat, position.lng)
+                    });
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: position.name,
+                    removable: true
+                        });
+
+                        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                        return marker;
+                       
+                            });
+                            clusterer.addMarkers(markers);
+
+                        });
+
+                    });
+
+              $(document).ready(function(){
+            console.log('start');
+                //예방접종 센터
+                $.get("./vaccinsenter.json", function(positions){
+                
+                    var markers = $(positions).map(function(i, position) {
+                        var marker = new kakao.maps.Marker({
+                            position : new kakao.maps.LatLng(position.lat, position.lng)
+                    });
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: position.name,
+                    removable: true
+                        });
+
+                        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                        return marker;
+                       
+                            });
+                            clusterer.addMarkers(markers);
+
+                        });
+     
+                    });
+
+              $(document).ready(function(){
+            console.log('start');
+            //호흡기전담 클리닉
+                $.get("./relaxhospital.json", function(positions){
+                
+                    var markers = $(positions).map(function(i, position) {
+                        var marker = new kakao.maps.Marker({
+                            position : new kakao.maps.LatLng(position.lat, position.lng)
+                    });
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: position.name,
+                    removable: true
+                        });
+
+                        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                        return marker;
+                       
+                            });
+                            clusterer.addMarkers(markers);
+ 
+                        });
+             
+                    });
+  
+              $(document).ready(function(){
+            console.log('start');
+                    //국민안심병원
+                $.get("./respiratoryh.json", function(positions){
+                
+                    var markers = $(positions).map(function(i, position) {
+                        var marker = new kakao.maps.Marker({
+                            position : new kakao.maps.LatLng(position.lat, position.lng)
+                    });
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: position.name,
+                    removable: true
+                        });
+
+                        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                        return marker;
+                       
+                            });
+                            clusterer.addMarkers(markers);
+
+                        });
+
+                    });
+       
+                        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+                function makeOverListener(map, marker, infowindow) {
+                    return function () {
+                        infowindow.open(map, marker);
+                    };
+                }
+
+                // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+                function makeOutListener(infowindow) {
+                    return function () {
+                        infowindow.close();
+                    };
+                }
+                
+                function setCenter() {            
+                    // 이동할 위도 경도 위치를 생성합니다 
+                    var moveLatLon = new kakao.maps.LatLng(position.lat, position.lng);
+                    
+                    // 지도 중심을 이동 시킵니다
+                    map.setCenter(moveLatLon);
+                }
+
+                    
+                    
+              kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+
+                // 현재 지도 레벨에서 1레벨 확대한 레벨
+                var level = map.getLevel()-1;
+
+                // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
+                map.setLevel(level, {anchor: cluster.getCenter()});
+    });
+
+</script>
+</body>
+</html>

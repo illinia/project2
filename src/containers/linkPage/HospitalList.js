@@ -7,13 +7,10 @@ import { withRouter } from 'react-router';
 
 const HospitalList = ({ pageno, titleList, location }) => {
   const dispatch = useDispatch()
-  const { hospitalPageList, error, loading, type, keyword } = useSelector(
+  const { hospitalPageList, loading } = useSelector(
     ({ hospital, loading }) => ({
       hospitalPageList: hospital.list,
-      error: hospital.error,
       loading: loading['hospital/LIST_HOSPITAL'],
-      type: hospital.type,
-      keyword: hospital.keyword,
     }))
 
   useEffect(() => {
@@ -21,7 +18,7 @@ const HospitalList = ({ pageno, titleList, location }) => {
       ignoreQueryPrefix: true,
     })
     dispatch(listHospital({ pageno, pagenum, type, keyword }))
-    dispatch(initializeSearch())
+
   }, [dispatch, pageno, location.search])
 
   return (

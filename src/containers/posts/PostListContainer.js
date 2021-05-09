@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
 import { initializeSearch, listPosts, onSearchChange } from '../../modules/posts';
 import qs from 'qs';
-import { initializeUpdate } from '../../modules/replyUpdate';
-import { editShowInitialize } from '../../modules/reply';
 
 const PostListContainer = ({ location }) => {
   const dispatch = useDispatch();

@@ -66,13 +66,6 @@ const SeoulPage = () => {
       <MainTableTitle jsonList={seoul2JsonTitle2} />
       <MainTableContent jsonList={seoul2JsonResult1Part2} />
       <MainTableContent jsonList={seoul2JsonResult2Part2} />
-      {/* <img src="http://127.0.0.1:9800/static/img/checkpie.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/addcnt.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/confcnt.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/state.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/statepie.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/age.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/gender.png" alt="로딩안됨" /> */}
     </SeoulPageBlock>
   )
 }

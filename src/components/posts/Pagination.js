@@ -12,7 +12,12 @@ const PaginationBlock = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 3rem;
+
+  @media (max-width: 430px) {
+    width: 100%;
+  }
 `;
+
 const PageNumber = styled(Link)`
   display: flex;
   justify-content: center;

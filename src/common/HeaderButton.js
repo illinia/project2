@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const categories = [
   {
     name: 'main',
-    text: '코로나 현황'
+    text: '코로나현황'
   },
   {
     name: 'vaccine',

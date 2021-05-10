@@ -7,7 +7,7 @@ import Loading from '../../common/Loading';
 import palette from '../../lib/styles/palette';
 
 const HospitalTableBlock = styled.div`
-  width: 100%;
+  width: 90%;
   border-top: 1px solid ${palette.gray[8]};
   border-bottom: 1px solid ${palette.gray[8]};
   margin: 0 auto;

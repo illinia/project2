@@ -38,13 +38,13 @@ const KoreaPage = () => {
 
   return (
     <KoreaPageBlock>
-      <img src={checkpieChart} alt="로딩중" />
-      <img src={addcntChart} alt="로딩중" />
-      <img src={confcntChart} alt="로딩중" />
-      <img src={stateChart} alt="로딩중" />
-      <img src={statepieChart} alt="로딩중" />
-      <img src={ageChart} alt="로딩중" />
-      <img src={genderChart} alt="로딩중" />
+      <img src="http://localhost:9100/static/img/checkpie.png" alt={checkpieChart} />
+      <img src="http://localhost:9100/static/img/addcnt.png" alt={addcntChart} />
+      <img src="http://localhost:9100/static/img/confcnt.png" alt={confcntChart} />
+      <img src="http://localhost:9100/static/img/state.png" alt={stateChart} />
+      <img src="http://localhost:9100/static/img/statepie.png" alt={statepieChart} />
+      <img src="http://localhost:9100/static/img/age.png" alt={ageChart} />
+      <img src="http://localhost:9100/static/img/gender.png" alt={genderChart} />
       <TableTitle>코로나 검사 현황</TableTitle>
       <MainTableTitle jsonList={korea1JsonTitle} />
       <MainTableContent jsonList={Object.values(korea1Json)} />
@@ -71,11 +71,6 @@ const KoreaPage = () => {
           <MainTableContent jsonList={Object.values(list)} />
         </>
       ))}
-
-      {/* <img src="http://127.0.0.1:9800/static/img/seoulareabar.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/seoulareabar1.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/seoulareabar2.png" alt="로딩안됨" />
-      <img src="http://127.0.0.1:9800/static/img/seoulareapie.png" alt="로딩안됨" /> */}
     </KoreaPageBlock>
   )
 }

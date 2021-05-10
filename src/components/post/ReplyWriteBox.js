@@ -71,25 +71,6 @@ const ReplyWriteDetailBox = styled.input`
   height: 40px;
 `;
 
-// const ReplySubmitButton = styled(ReplyActionButtonsContainer)`
-//   width: 70px;
-//   height: 30px;
-//   border: none;
-//   border-radius: 4px;
-//   font-size: 1rem;
-//   font-weight: bold;
-//   padding: 0.25rem 1rem;
-//   color: white;
-//   outline: none;
-//   cursor: pointer;
-//   background: ${palette.cyan[5]};
-
-//   &:hover {
-//     background: ${palette.cyan[4]};
-//   }
-// `;
-
-
 const ReplyWriteBox = ({ replyNo }) => {
   const dispatch = useDispatch();
   const { boardno, content, name, pass, error, editShow, contentUpdate, passUpdate } = useSelector(({ reply, post, replyUpdate }) => ({

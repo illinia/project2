@@ -13,6 +13,7 @@ const DetailTabBlock = styled.div`
   transition: 0.3s ease-in-out;
   @media (max-width: 640px) {
     width: 95%;
+    margin-top: 60px;
   }
 `;
 

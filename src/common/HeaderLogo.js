@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import Button from '../components/common/Button';
+
+const HeaderLogoBlock = styled.div`
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
 
 const Logo = styled(NavLink)`
   width: 170px;
@@ -14,14 +22,18 @@ const Logo = styled(NavLink)`
   text-decoration: none;
 `;
 
-
 const HeaderLogo = () => {
   return (
-    <div>
+    <HeaderLogoBlock>
       <Logo to="/">
         BIGTORE
       </Logo>
-    </div>
+      <Button
+        onClick={() => window.open("https://38e199339b39.ngrok.io/chat2", "BIGTORE 챗봇 서비스", "width=750, height=700", "_blank")}
+      >
+        챗봇서비스
+      </Button>
+    </HeaderLogoBlock>
   )
 }
 

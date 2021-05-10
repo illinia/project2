@@ -129,8 +129,7 @@ const PostList = ({ posts, loading, error, SearchChange, onSubmit, searchButtonT
             onChange={SearchChange}
             name="type"
           >
-            <option value="">종류선택</option>
-            <option value="title">제목</option>
+            <option defaultValue value="title">제목</option>
             <option value="name">글쓴이</option>
             <option value="content">내용</option>
           </SearchTypeBox>

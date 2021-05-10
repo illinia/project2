@@ -35,7 +35,7 @@ export function* postsSaga() {
 const initialState = {
   posts: null,
   error: null,
-  type: '',
+  type: 'title',
   keyword: '',
 }
 

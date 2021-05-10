@@ -18,7 +18,6 @@ const SeoulPageBlock = styled(ChartSize)`
 const SeoulPage = () => {
   const seoul1Json = seoul1
   const seoul2Json = seoul2[0]
-  console.log(seoul2Json)
 
   const seoul2JsonValue1Part1 = ['JONGNO', 'JUNGGU', 'YONGSAN', 'SEONGDONG', 'GWANGJIN', 'DDM', 'JUNGNANG', 'SEONGBUK', 'GANGBUK', 'DOBONG', 'NOWON', 'EP', 'SDM']
   const seoul2JsonValue1Part2 = ['MAPO', 'YANGCHEON', 'GANGSEO', 'GURO', 'GEUMCHEON', 'YDP', 'DONGJAK', 'GWANAK', 'SEOCHO', 'GANGNAM', 'SONGPA', 'GANGDONG', 'ETC']
@@ -48,10 +47,10 @@ const SeoulPage = () => {
 
   return (
     <SeoulPageBlock>
-      <img src={seoulareabar} alt="로딩중" />
-      <img src={seoulareapie} alt="로딩중" />
-      <img src={seoulareabar1} alt="로딩중" />
-      <img src={seoulareabar2} alt="로딩중" />
+      <img src="http://localhost:9100/static/img/seoulareabar.png" alt={seoulareabar} />
+      <img src="http://localhost:9100/static/img/seoulareapie.png" alt={seoulareapie} />
+      <img src="http://localhost:9100/static/img/seoulareabar1.png" alt={seoulareabar1} />
+      <img src="http://localhost:9100/static/img/seoulareabar2.png" alt={seoulareabar2} />
       <TableTitle>서울시 코로나 현황</TableTitle>
       <MainTableTitle jsonList={seoul1JsonTitle} />
       {seoul1Json.map(list => (

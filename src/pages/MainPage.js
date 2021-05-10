@@ -5,12 +5,21 @@ import { Route } from 'react-router-dom';
 import DetailTab from '../components/main/DetailTab';
 import KoreaPage from '../components/main/KoreaPage';
 import WorldPage from '../components/main/WorldPage';
+import covidmain from '../json/covidmain.json';
 
 const MainPage = ({ match, location }) => {
   const category = location.pathname
+  const covidmainData = covidmain[0];
+  const covidmainTitle = ['누적확진자수', '일일추가확진자수', '격리해제수']
+
   return (
     <>
-      <Board boardtitle="코로나 19 실시간 현황" subtitle="코로나 테스트" />
+      <Board
+        boardtitle="코로나 19 실시간 현황"
+        subtitle="코로나 현황판"
+        updateData={covidmainData}
+        updateTitle={covidmainTitle}
+      />
       <DetailTab category={category} />
       {match.path === "/" && <SeoulPage />}
       <Route path={`${match.path}/seoul`} component={SeoulPage} />

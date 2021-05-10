@@ -4,12 +4,13 @@ import palette from '../../lib/styles/palette';
 
 const UpdateBoardBlock = styled.div`
   width: 800px;
-  height: 160px;
+  height: 120px;
   border-radius: 20px;
   background: white;
   box-shadow: 1px 1px 3px 0 ${palette.gray[5]};
-  padding: 30px 15px;
+  padding: 0 15px;
   display: grid;
+  align-items: center;
   grid-template-columns: auto auto auto;
   transition: 0.3s ease-in-out;
   margin-top: 20px;
@@ -18,7 +19,7 @@ const UpdateBoardBlock = styled.div`
     width: 90%;
     div {
       width: 100%;
-      transition: inherit;
+      justify-content: center;
     }
   }
 `;
@@ -30,17 +31,49 @@ const UpdateBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  color: ${palette.gray[7]};
+  padding: 1rem 0;
+  font-weight: 500;
   & + & {
     border-left: 2px solid ${palette.gray[4]};
   }
 `;
 
-const UpdateBoard = () => {
+const UpdateDetailBox = styled.div`
+  font-size: 1.125rem;
+  font-weight: 700;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color: red;
+`;
+
+const UpdateBoard = ({ updateData, updateTitle }) => {
+  // (국내 전국)
+  // 누적확진자수, 일일추가확진자수, 격리해제수
+  // (국내 백신)
+  // 1분기 접종대상자, 1차접종률, 2차접종률
   return (
     <UpdateBoardBlock>
-      <UpdateBox>테스트</UpdateBox>
-      <UpdateBox>테스트</UpdateBox>
-      <UpdateBox>테스트</UpdateBox>
+      <UpdateBox>
+        {updateTitle[0]}
+        <UpdateDetailBox>
+          {Object.values(updateData)[0].toLocaleString()}
+        </UpdateDetailBox>
+      </UpdateBox>
+      <UpdateBox>
+        {updateTitle[1]}
+        <UpdateDetailBox>
+          {Object.values(updateData)[1].toLocaleString()}
+        </UpdateDetailBox>
+      </UpdateBox>
+      <UpdateBox>
+        {updateTitle[2]}
+        <UpdateDetailBox>
+          {Object.values(updateData)[2].toLocaleString()}
+        </UpdateDetailBox>
+      </UpdateBox>
     </UpdateBoardBlock>
   )
 }

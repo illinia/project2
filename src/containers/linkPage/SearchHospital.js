@@ -16,8 +16,8 @@ align-items: center;
 margin: 0 auto;
 margin-top: 1rem;
 transition: 0.3s ease-in;
-@media (max-width: 820px) {
-  width: calc(100% - 50px)
+@media (max-width: 900px) {
+  width: 90%;
 }
 `;
 
@@ -69,10 +69,6 @@ const SearchButton = styled(Button)`
   font-size: 0.875rem;
 `;
 
-const hospitalSearchButton = styled(Button)`
-
-`;
-
 const SearchHospital = ({ location }) => {
   const dispatch = useDispatch();
   const { type, keyword } = useSelector(
@@ -118,8 +114,7 @@ const SearchHospital = ({ location }) => {
           onChange={SearchChange}
           name="type"
         >
-          <option value="">검색종류</option>
-          <option value="name">기관명</option>
+          <option defaultValue value="name">병원명</option>
           <option value="address">주소</option>
         </SearchTypeBox>
         <SearchInput

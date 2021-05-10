@@ -35,7 +35,7 @@ export const onSearchChange = createAction(
 const initialState = {
   list: null,
   error: null,
-  type: '',
+  type: 'name',
   keyword: '',
 }
 

@@ -24,13 +24,16 @@ const BoardSubTitle = styled.div`
   font-weight: 500;
 `;
 
-const board = ({ boardtitle, subtitle }) => {
+const board = ({ boardtitle, subtitle, updateData, updateTitle }) => {
   return (
     <>
       <BoardBlock>
         <BoardTitle>{boardtitle}</BoardTitle>
         <BoardSubTitle>{subtitle}</BoardSubTitle>
-        <UpdateBoard />
+        <UpdateBoard
+          updateData={updateData}
+          updateTitle={updateTitle}
+        />
       </BoardBlock>
     </>
   )

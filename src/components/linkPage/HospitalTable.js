@@ -47,7 +47,7 @@ const HospitalTable = ({ titleList, hospitalPageList, loading }) => {
         <>
           {hospitalPageList.hospitalList.map(list => (
             <ContentTableBlock key={list.no}>
-              {list.no}{list.sido}{list.address}{list.name}{list.callNum}{<MapButton onClick={() => window.open(`https://map.kakao.com/link/map/${list.name},${list.lat},${list.lng}`, "", "_blank")}>지도</MapButton>}
+              {list.no}{list.sido}{list.address}{list.name}{list.callNum}{<MapButton onClick={() => window.open(`https://map.kakao.com/link/to/${list.name},${list.lat},${list.lng}`, "", "_blank")}>지도</MapButton>}
             </ContentTableBlock>
           ))}
         </>

@@ -146,7 +146,7 @@ const PostList = ({ posts, loading, error, SearchChange, onSubmit, searchButtonT
             검색
           </SearchButton>
         </SearchBox>
-        <Button cyan to="/community/write">
+        <Button cyan to="/community/write" style={{ minWidth: "125px", minHeight: "27px" }}>
           새 글 작성하기
         </Button>
       </WritePostButtonWrapper>

@@ -47,17 +47,6 @@ const ButtonsBlock = styled.div`
       align-items: none;
       margin-right: 5px;
     `}
-
-  /* flex-direction: ${props =>
-    props.toggle ? "column" : "row"};
-  width: ${props =>
-    props.toggle ? "100vw" : "600px"};
-  height: ${props =>
-    props.toggle ? "100vh" : "30px"};
-  justify-content: ${props =>
-    props.toggle ? "center" : "none"};
-  align-items: ${props =>
-    props.toggle ? "center" : "none"}; */
 `;
 
 const StyledButton = styled(NavLink)`
@@ -65,7 +54,7 @@ const StyledButton = styled(NavLink)`
   justify-content: center;
   align-items: center;
   width: ${props =>
-    props.toggle === false ? "100px" : "90px"};
+    props.toggle === false ? "100px" : "100px"};
   height: ${props =>
     props.toggle === false ? "60px" : "30px"};
   font-size: 1.125rem;

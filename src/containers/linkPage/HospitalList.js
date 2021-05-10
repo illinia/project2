@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { initializeSearch, listHospital } from '../../modules/hospital';
+import { listHospital } from '../../modules/hospital';
 import { useDispatch, useSelector } from 'react-redux';
 import HospitalTable from '../../components/linkPage/HospitalTable';
 import qs from 'qs';

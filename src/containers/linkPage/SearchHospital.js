@@ -9,6 +9,10 @@ import qs from 'qs';
 
 const SearchHospitalBlockBlock = styled.div`
 width: 800px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
 margin: 0 auto;
 margin-top: 1rem;
 transition: 0.3s ease-in;
@@ -27,8 +31,8 @@ const SearchHospitalBlock = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  @media (max-width: 300px) {
-    width: 100px;
+  @media (max-width: 500px) {
+    width: 150px;
     height: 100px;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
@@ -54,7 +58,7 @@ const SearchInput = styled.input`
   }
 
   @media (max-width: 500px) {
-    width: 100px;
+    width: 100%;
   }
 `;
 
@@ -63,6 +67,10 @@ const SearchButton = styled(Button)`
   height: 25px;
   padding: 0;
   font-size: 0.875rem;
+`;
+
+const hospitalSearchButton = styled(Button)`
+
 `;
 
 const SearchHospital = ({ location }) => {
@@ -124,8 +132,9 @@ const SearchHospital = ({ location }) => {
           disabled={!searchButtonToggle}
         >
           검색
-      </SearchButton>
+        </SearchButton>
       </SearchHospitalBlock>
+      <Button cyan onClick={() => window.open("http://localhost:80/map/", "", "_blank")}>전체 지도보기</Button>
     </SearchHospitalBlockBlock>
   )
 }

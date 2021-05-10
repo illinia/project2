@@ -45,7 +45,6 @@ const InfoPage = () => {
     <>
       <Menu>코로나란?</Menu>
       <Page>
-        <button onClick={() => window.open("http://localhost:80/map/", "", "_blank")}>테스트 버튼</button>
         <img src="http://ncov.mohw.go.kr/static/image/content/baroview_poster3.png" alt="img 로딩중..." />
         <SmallPage>
           <img src="http://ncov.mohw.go.kr/static/image/content/baroview_poster4.png" alt="img 로딩중..." />

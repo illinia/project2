@@ -50,10 +50,6 @@ const UpdateDetailBox = styled.div`
 `;
 
 const UpdateBoard = ({ updateData, updateTitle }) => {
-  // (국내 전국)
-  // 누적확진자수, 일일추가확진자수, 격리해제수
-  // (국내 백신)
-  // 1분기 접종대상자, 1차접종률, 2차접종률
   return (
     <UpdateBoardBlock>
       <UpdateBox>

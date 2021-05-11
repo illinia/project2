@@ -49,6 +49,8 @@ const ButtonsBlock = styled.div`
     `}
 `;
 
+// styled-components 라이브러리를 통해
+// 자바스크립트안에 css를 구현할수 있음.
 const StyledButton = styled(NavLink)`
   display: flex;
   justify-content: center;

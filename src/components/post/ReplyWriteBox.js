@@ -103,7 +103,8 @@ const ReplyWriteBox = ({ replyNo }) => {
       })
     )
   }
-
+  // es6,7,8 자바스크립트 사용
+  // 아래 것은 비동기작업을 위한 async await 문법
   const onPublish = async () => {
     const value = boardno
     if (inputReplyNoCheck) {

@@ -87,13 +87,16 @@ const SearchHospital = ({ location }) => {
     )
   }
 
+  // 검색 버튼 활성, 비활성 상태
   const [searchButtonToggle, setSearchButtonToggle] = useState(false);
 
+  // 검색 키워드나 타입이 안정해져 있을 때는 에러방지를 위해 검색버튼 비활성화
   useEffect(() => {
     setSearchButtonToggle((keyword !== "" && type !== "") ? true : false
     )
   }, [keyword, type])
 
+  // 처음 들어왔을 때 파라미터 설정
   let pathName = location.pathname.split('/')
 
   if (pathName[2] === undefined) {
@@ -102,6 +105,7 @@ const SearchHospital = ({ location }) => {
     pathName = `${pathName[2]}`
   }
 
+  // 검색 요청
   const onSubmit = () => {
     const query = qs.stringify({ type, keyword })
     return `/pages/${pathName}?${query}`
@@ -129,6 +133,7 @@ const SearchHospital = ({ location }) => {
           검색
         </SearchButton>
       </SearchHospitalBlock>
+      {/* 병원, 진료소를 모아서 전체지도 띄워 주는 기능 */}
       <Button cyan onClick={() => window.open("http://localhost:80/map/", "", "_blank")}>전체 지도보기</Button>
     </SearchHospitalBlockBlock>
   )

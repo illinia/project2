@@ -5,6 +5,7 @@ import createRequestSaga, {
 import { takeLatest } from 'redux-saga/effects';
 import * as postsAPI from '../lib/api/post';
 
+// 게시글들 보기
 const INITIALIZE_SEARCH = createRequestActionTypes('posts/INITIALIZE_SEARCH')
 const [
   LIST_POSTS,

@@ -7,7 +7,9 @@ import Selecth from '../components/linkPage/Selecth';
 import Selecthcar from '../components/linkPage/Selecthcar';
 import Vaccinsenter from '../components/linkPage/Vaccinsenter';
 
+// 병원 페이지
 const LinkPage = ({ match, location }) => {
+  // 파라미터에 따른 첫페이지 출력
   const category = location.pathname
 
   return (

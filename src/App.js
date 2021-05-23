@@ -14,6 +14,7 @@ import { withRouter } from 'react-router-dom';
 const App = ({ location }) => {
   let pathName = location.pathname.split('/')
 
+  // 메인 페이지 파라미터 설정
   if (pathName[1] === "") {
     pathName = ["", "main"]
   }

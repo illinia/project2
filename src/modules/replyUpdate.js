@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 
+// 댓글 업데이트
 const INITIALIZE = 'replyUpdate/INITIALIZE';
 const CHANGE_FIELD = 'replyUpdate/CHANGE_FIELD';
 

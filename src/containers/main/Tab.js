@@ -25,6 +25,7 @@ const TabBlock = styled(Link)`
   }
 `;
 
+// 전체 페이지에 처음 들어왔을때 전체 탭에서 메인 페이지가 선택되게 하는 기능
 const Tab = ({ match, children, active, path, location }) => {
   let matchpath = match.path
 

@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
 
+// 웹 크기 저장 리덕스
 const CHANGE_VALUE = 'responsive/CHANGE_VALUE';
 
 export const changeValue = createAction(

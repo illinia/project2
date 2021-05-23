@@ -38,8 +38,8 @@ const PostContent = styled.div`
   margin-bottom: 1rem;
 `;
 
+// 게시글 보기
 const PostViewer = ({ post, error, loading, actionButtons }) => {
-
 
   if (error) {
     if (error.response && error.response.status === 404) {
@@ -48,6 +48,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
     return <PostViewerBlock>오류 발생</PostViewerBlock>
   }
 
+  // 로딩 중이거나, 게시글이 로딩이 안 되었을 때는 로딩 애니메이션 출력
   if (loading || !post) {
     return (
       <Loading />

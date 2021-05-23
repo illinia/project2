@@ -5,6 +5,7 @@ import createRequestSaga, {
 import { takeLatest } from 'redux-saga/effects';
 import * as hospitalAPI from '../lib/api/hospital';
 
+// 병원 관련 액션, 리듀서
 const INITIALIZE_HOSPITAL = createRequestActionTypes('hospital/INITIALIZE_HOSPITAL')
 const [
   LIST_HOSPITAL,
@@ -25,6 +26,7 @@ export function* hospitalSaga() {
   yield takeLatest(LIST_HOSPITAL, listHospitalSaga)
 }
 
+// 병원 검색기능 변경 감지 리덕스
 export const onSearchChange = createAction(
   SEARCH_CHANGE,
   ({ key, value }) => ({
@@ -32,6 +34,7 @@ export const onSearchChange = createAction(
   })
 )
 
+// hospital 상태 초기화값
 const initialState = {
   list: null,
   error: null,

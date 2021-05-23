@@ -1,8 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
-// import createRequestSaga, { createRequestActionTypes } from '../lib/createRequestSaga';
-// import * as postAPI from '../lib/api/post';
-// import { takeLatest } from 'redux-saga/effects';
 
+// 댓글보기
 const INITIALIZE = 'reply/INITIALIZE';
 const CHANGE_FIELD = 'reply/CHANGE_FIELD';
 const EDIT_SHOW = 'reply/EDIT_SHOW';

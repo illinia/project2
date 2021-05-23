@@ -5,6 +5,7 @@ import createRequestSaga, {
 } from '../lib/createRequestSaga';
 import * as postAPI from '../lib/api/post';
 
+// 글쓰기, 업데이트
 const INITIALIZE = 'write/INITIALIZE';
 const CHANGE_FIELD = 'write/CHANGE_FIELD';
 const [

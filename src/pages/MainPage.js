@@ -7,9 +7,12 @@ import KoreaPage from '../components/main/KoreaPage';
 import WorldPage from '../components/main/WorldPage';
 import covidmain from '../json/covidmain.json';
 
+// 메인페이지
 const MainPage = ({ match, location }) => {
   const category = location.pathname
+  // 코로나 json 데이터
   const covidmainData = covidmain[0];
+  // 현황판 제목
   const covidmainTitle = ['누적확진자수', '일일추가확진자수', '격리해제수']
 
   return (

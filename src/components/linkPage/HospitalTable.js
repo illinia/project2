@@ -36,8 +36,6 @@ const HospitalTable = ({ titleList, hospitalPageList, loading }) => {
     )
   }
 
-
-
   return (
     <HospitalTableBlock>
       <TitleTableBlock>
@@ -52,12 +50,6 @@ const HospitalTable = ({ titleList, hospitalPageList, loading }) => {
           ))}
         </>
       )}
-      {/* <ContentTableBlock>
-        {["1", "서울", "강남구보건소", "서울특별시 강남구 삼성동(삼성2동) 8 강남구보건소", "02-3423-5555", <MapButton>버튼</MapButton>]}
-      </ContentTableBlock>
-      <ContentTableBlock>
-        {["1", "서울", "강남구보건소", "서울특별시 강남구 삼성동(삼성2동) 8 강남구보건소", "02-3423-5555", <MapButton>버튼</MapButton>]}
-      </ContentTableBlock> */}
     </HospitalTableBlock>
   )
 }

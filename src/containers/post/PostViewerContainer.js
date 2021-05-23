@@ -9,6 +9,7 @@ import { removePost } from '../../lib/api/post';
 import { editShowInitialize } from '../../modules/reply';
 import { initializeUpdate } from '../../modules/replyUpdate';
 
+// 게시글 상세보기
 const PostViewerContainer = ({ match, history }) => {
   const { postId } = match.params;
   const dispatch = useDispatch();
@@ -19,21 +20,21 @@ const PostViewerContainer = ({ match, history }) => {
     password: write.pass,
   }));
 
+  // 게시글 상세보기 페이지가 바뀌었을 때 댓글 업데이트 창 보여짐 초기화, 댓글 업데이트 내용 초기화
   useEffect(() => {
     dispatch(readPost(postId));
     dispatch(editShowInitialize())
     dispatch(initializeUpdate())
-
-    // return () => {
-    //   dispatch(unloadPost());
-    // };
   }, [dispatch, postId])
 
+  // 게시글 수정버튼 클릭했을 때 해당 게시글 내용을 수정 페이지에 불러오는 기능
   const onEdit = () => {
     dispatch(setOriginalPost(post.board))
     history.push('/community/write')
   }
 
+  // 게시글 삭제. 따로 리덕스 사가를 안 만들어서 삭제 api를 불러온 후 가져온 결과 데이터로
+  // 성공, 실패 여부 처리
   const onRemove = async (no) => {
     const pass = password
     try {
@@ -57,6 +58,7 @@ const PostViewerContainer = ({ match, history }) => {
     }
   }
 
+  // 업데이트 취소시 업데이트 내용들 초기화 기능
   const initializeFunction = () => {
     dispatch(initialize());
   }

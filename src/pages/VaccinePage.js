@@ -29,17 +29,16 @@ const VaccineChart = styled.div`
   margin-top: 5rem;
 `;
 
+// 백신 페이지
 const VaccinePage = () => {
   const vaccine1Json = vaccine1[0]
   const vaccine2Json = vaccine2
-  // (국내 전국)
-  // 누적확진자수, 일일추가확진자수, 격리해제수
-  // (국내 백신)
-  // 1분기 접종대상자, 1차접종률, 2차접종률
 
+  // 표데이터 제목
   const vaccine1JsonTitle = ['기준일', '1분기 1차접종대상', '1분기 1차실접종자', '1분기 2차접종대상', '1분기 2차실접종']
   const vaccine2JsonTitle = ['기준일', '기관', '1차 접종대상자', '1차 실접종자', '1차접종률', '백신종류']
 
+  // 백신 현황판 제목
   const vaccinemainData = vaccinemain[0];
   const vaccinemainTitle = ['1분기 접종대상자', '1차 접종률', '2차 접종률']
 

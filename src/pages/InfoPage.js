@@ -40,6 +40,7 @@ const SmallPage = styled.div`
   }
 `;
 
+// 코로나 정보 페이지
 const InfoPage = () => {
   return (
     <>

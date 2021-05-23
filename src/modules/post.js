@@ -5,6 +5,7 @@ import createRequestSaga, {
 import * as postAPI from '../lib/api/post';
 import { takeLatest } from 'redux-saga/effects';
 
+// 상세보기
 const [
   READ_POST,
   READ_POST_SUCCESS,

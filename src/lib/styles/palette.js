@@ -1,3 +1,4 @@
+// 자주쓰는 색 모음 출저 리액트를 다루는 기술
 const palette = {
   gray: [
     '#f8f9fa',

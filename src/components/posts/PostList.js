@@ -99,7 +99,7 @@ const TitleBlock = styled(Link)`
 `;
 
 const PostItem = ({ post }) => {
-  const { regDate, name, title, content, no, cnt } = post
+  const { regDate, name, title, content, no, cnt } = post;
 
   return (
     <PostItemBlock>
@@ -107,12 +107,14 @@ const PostItem = ({ post }) => {
       <SubInfo no={no} name={name} regDate={new Date(regDate)} cnt={cnt} />
       <p>{content}</p>
     </PostItemBlock>
-  )
-}
+  );
+};
 
 const PostList = ({ posts, loading, error, SearchChange, onSubmit, searchButtonToggle }) => {
   if (error) {
-    return <PostListBlock>에러가 발생했습니다.</PostListBlock>
+    return <PostListBlock>
+      {console.error(error)}
+    </PostListBlock>
   }
 
   if (loading) {

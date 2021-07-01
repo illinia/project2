@@ -38,13 +38,13 @@ const KoreaPage = () => {
 
   return (
     <KoreaPageBlock>
-      <img src="http://localhost:9100/static/img/checkpie.png" alt={checkpieChart} />
-      <img src="http://localhost:9100/static/img/addcnt.png" alt={addcntChart} />
-      <img src="http://localhost:9100/static/img/confcnt.png" alt={confcntChart} />
-      <img src="http://localhost:9100/static/img/state.png" alt={stateChart} />
-      <img src="http://localhost:9100/static/img/statepie.png" alt={statepieChart} />
-      <img src="http://localhost:9100/static/img/age.png" alt={ageChart} />
-      <img src="http://localhost:9100/static/img/gender.png" alt={genderChart} />
+      <img alt="http://localhost:9100/static/img/checkpie.png" src={checkpieChart} />
+      <img alt="http://localhost:9100/static/img/addcnt.png" src={addcntChart} />
+      <img alt="http://localhost:9100/static/img/confcnt.png" src={confcntChart} />
+      <img alt="http://localhost:9100/static/img/state.png" src={stateChart} />
+      <img alt="http://localhost:9100/static/img/statepie.png" src={statepieChart} />
+      <img alt="http://localhost:9100/static/img/age.png" src={ageChart} />
+      <img alt="http://localhost:9100/static/img/gender.png" src={genderChart} />
       <TableTitle>코로나 검사 현황</TableTitle>
       <MainTableTitle jsonList={korea1JsonTitle} />
       <MainTableContent jsonList={Object.values(korea1Json)} />

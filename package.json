@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
+    "http-proxy-middleware": "^2.0.0",
     "immer": "^9.0.2",
     "jquery": "^3.6.0",
     "json-server": "^0.16.3",
@@ -52,6 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:8080"
+  }
 }

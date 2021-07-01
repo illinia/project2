@@ -47,10 +47,10 @@ const SeoulPage = () => {
 
   return (
     <SeoulPageBlock>
-      <img src="http://localhost:9100/static/img/seoulareabar.png" alt={seoulareabar} />
-      <img src="http://localhost:9100/static/img/seoulareapie.png" alt={seoulareapie} />
-      <img src="http://localhost:9100/static/img/seoulareabar1.png" alt={seoulareabar1} />
-      <img src="http://localhost:9100/static/img/seoulareabar2.png" alt={seoulareabar2} />
+      <img alt="http://localhost:9100/static/img/seoulareabar.png" src={seoulareabar} />
+      <img alt="http://localhost:9100/static/img/seoulareapie.png" src={seoulareapie} />
+      <img alt="http://localhost:9100/static/img/seoulareabar1.png" src={seoulareabar1} />
+      <img alt="http://localhost:9100/static/img/seoulareabar2.png" src={seoulareabar2} />
       <TableTitle>서울시 코로나 현황</TableTitle>
       <MainTableTitle jsonList={seoul1JsonTitle} />
       {seoul1Json.map(list => (

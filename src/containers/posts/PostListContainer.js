@@ -35,7 +35,7 @@ const PostListContainer = ({ location }) => {
   useEffect(() => {
     const { pagenum, type, keyword } = qs.parse(location.search, {
       ignoreQueryPrefix: true,
-    })
+    });
     dispatch(listPosts({ pagenum, type, keyword }))
     dispatch(initializeSearch())
   }, [dispatch, location.search])

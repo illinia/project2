@@ -3,8 +3,7 @@ import qs from 'qs';
 
 const config = {
   headers: {
-    "Accept": "application/json, text/plain, */*",
-    "Content-Type": "application/json;charset=UTF-8"
+    Accept: "application/json, text/plain, */*",
   }
 }
 // 병원 리스트 불러오는 api (병원종류 = pageno, 페이지 번호, 검색타입, 검색 키워드)

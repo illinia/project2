@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import CommunityPage from './pages/CommunityPage';
 import InfoPage from './pages/InfoPage';
 import LinkPage from './pages/LinkPage';
@@ -20,7 +20,7 @@ const App = ({ location }) => {
   }
 
   return (
-    <>
+    <HashRouter>
       <Header category={pathName[1]} />
       <Route component={CommunityPage} path="/community" exact />
       <Route component={InfoPage} path="/infoPage" exact />
@@ -31,7 +31,7 @@ const App = ({ location }) => {
       <Route component={VaccinePage} path="/vaccine" exact />
       <Route component={WritePage} path="/community/write" exact />
       <Route component={PostPage} path="/community/post/:postId" exact />
-    </>
+    </HashRouter>
   )
 }
 

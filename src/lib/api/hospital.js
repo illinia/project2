@@ -6,5 +6,5 @@ export const listHospitals = ({ pageno, pagenum, type, keyword }) => {
   const queryString = qs.stringify({
     pagenum, type, keyword
   })
-  return client.get(`http://13.37.90.242:8080/WebProject/hospital/${pageno}?${queryString}`);
+  return client.get(`/WebProject/hospital/${pageno}?${queryString}`);
 }

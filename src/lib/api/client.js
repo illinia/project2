@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const client = axios.create({
-  responseType: 'json',
-});
+const client = axios.create();
 
 export default client;

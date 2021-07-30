@@ -15,10 +15,10 @@ const categories = [
     name: 'infoPage',
     text: '코로나란'
   },
-  {
-    name: 'news',
-    text: '관련 뉴스'
-  },
+  // {
+  //   name: 'news',
+  //   text: '관련 뉴스'
+  // },
   {
     name: 'community',
     text: '커뮤니티'

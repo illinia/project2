@@ -21,7 +21,7 @@ Backend(Flask, ML): Yunha Jun, Yunhwo Jo<br>
 DevOps(DB, AWS, Map): Heekyung Yang<br>
 
 ## Site
-💡[Click!](d3dalimdv57ooz.cloudfront.net)
+💡[Click!](http://d3dalimdv57ooz.cloudfront.net)
 
 ## Install
 *terminal*

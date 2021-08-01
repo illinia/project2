@@ -28,11 +28,11 @@ const HeaderLogo = () => {
       <Logo to="/">
         BIGTORE
       </Logo>
-      <Button
+      {/* <Button
         onClick={() => window.open("https://a7948e80ebf7.ngrok.io/chat2", "BIGTORE 챗봇 서비스", "width=750, height=700", "_blank")}
       >
         챗봇서비스
-      </Button>
+      </Button> */}
     </HeaderLogoBlock>
   )
 }

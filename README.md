@@ -23,6 +23,16 @@ DevOps(DB, AWS, Map): Heekyung Yang<br>
 ## Site
 💡[Click!](http://d3dalimdv57ooz.cloudfront.net)
 
+## My part
+### *In academy project*
+* Front UX, UI Design
+* develop by React.js
+* Architect Rest API
+
+### *In refactoring*
+* Deploy React by NGinx in AWSEC2
+* Deploy Spring API Server by Tomcat in AWSEC2
+
 ## Install
 *terminal*
 ```
@@ -34,49 +44,7 @@ npm start
 ## API Architect
 
 🛠[API](https://purple-mandolin-9fe.notion.site/API-project2-0028bfbd91424b01a7e99535be1f3a89)
-<!-- 
-## History
-* 29 Jul
-    * Update README, deploy test
-* 28 Jul
-    * Save, load in asyncstorage and firebase
-* 27 Jul
-    * Update, delete meal function
-* 26 Jul
-    * Add meal, update meal function
-* 25 Jul
-    * Calculator page
-* 24 Jul
-    * Profile page
-* 20 Jul ~ 23 Jul
-    * ~~Google, Facebook login~~
-        * ~~I needed to bind login authentication~~
-        * ~~google, facebook firebase sdk has problem in my laptop(M1 Macbook)~~
-    * Sign up, login in
-    * Profile upload
-* 17 Jul ~ 19 Jul
-    * Manage ideas
-    * UX, UI design [Whimsical](https://whimsical.com)
 
-## Deploy History
-* 0.0.0
-    * Connect firebase
-    * Login with email, password
-    * Signin with profile picture, name, email, password
-    * Calculate Calories, save and load on firebase
-    * Edit profile picture
-
-## Coming Release
-* Edit name
-* Sign up with email authentication
-* SNS function
-* Chat function
-* App store release
-
-## Issues
-* SDK for OAuth Login error
-* Android build problem
--->
 ## Meta
 * Taemin Kim : Frontend
 * Email : ![gmail-link] seolin1218@gmail.com

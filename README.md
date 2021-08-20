@@ -1,4 +1,5 @@
 # Teamproject2
+
 > Share corona Info, communicate, get hospital info
 
 ![npm-image]
@@ -15,26 +16,33 @@
 ![aws-stack]
 
 ## Introduce Teamcrew
+
 Frontend(React): Taemin Kim(me)<br>
 Backend(Spring): Sungjae Kim<br>
 Backend(Flask, ML): Yunha Jun, Yunhwo Jo<br>
 DevOps(DB, AWS, Map): Heekyung Yang<br>
 
 ## Site
-💡[Click!](http://d3dalimdv57ooz.cloudfront.net)
+
+💡[Click!](http://13.37.90.242)
 
 ## My part
-### *In academy project*
-* Front UX, UI Design
-* develop by React.js
-* Architect Rest API
 
-### *In refactoring*
-* Deploy React by NGinx in AWSEC2
-* Deploy Spring API Server by Tomcat in AWSEC2
+### _In academy project_
+
+- Front UX, UI Design
+- develop by React.js
+- Architect Rest API
+
+### _In refactoring_
+
+- Deploy React by NGinx in AWSEC2
+- Deploy Spring API Server by Tomcat in AWSEC2
 
 ## Install
-*terminal*
+
+_terminal_
+
 ```
 git clone https://github.com/illinia/project2.git
 cd project2 && npm i
@@ -46,11 +54,13 @@ npm start
 🛠[API](https://purple-mandolin-9fe.notion.site/API-project2-0028bfbd91424b01a7e99535be1f3a89)
 
 ## Meta
-* Taemin Kim : Frontend
-* Email : ![gmail-link] seolin1218@gmail.com
-* Github : [![github-link]](https://github.com/illinia)
+
+- Taemin Kim : Frontend
+- Email : ![gmail-link] seolin1218@gmail.com
+- Github : [![github-link]](https://github.com/illinia)
 
 <!-- Markdown link & img dfn's -->
+
 [npm-image]: https://img.shields.io/badge/npm-7.15.1-orange
 [release-image]: https://img.shields.io/badge/release-0.0.0-success
 [react-image]: https://img.shields.io/badge/React-17.0.1-%2361dafb
